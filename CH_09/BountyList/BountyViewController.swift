@@ -11,7 +11,7 @@ import UIKit
 class BountyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
     let nameList = ["brook", "chopper", "franky", "luffy", "nami", "robin", "sanji", "zoro"]
-    let bountyList = [3300000, 50, 44000000, 30000000, 16000000, 80000000, 77000000, 120000000]
+    let bountyList = [33000000, 50, 44000000, 300000000, 16000000, 80000000, 77000000, 120000000]
     
     // segue 수행하기 직전 준비하는 함수
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

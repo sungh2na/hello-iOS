@@ -1,3 +1,8 @@
+9. 원피스 현상금 추천 앱 만들기
+
+<image src="Resource/bountylist1.png" >
+<image src="Resource/bountylist2.png" >
+
 ## 테이블 뷰 
 
 - 여러 아이템을 리스트 형태로 보여주고 싶을 때 
@@ -23,8 +28,8 @@
 }
 ```
 
-+ 스토리 보드에서 viewController 두개를 연결
-+ 여러가지 segue 있을 수 있으니까 identifier 지정해주기
+- 스토리 보드에서 viewController 두개를 연결
+- 여러가지 segue 있을 수 있으니까 identifier 지정해주기
 
 ## 뷰컨트롤러간 데이터 전달하기
 
@@ -49,5 +54,4 @@
 ``` 
 - sender 파라미터에 정보를 넣어서 보냄
 - segue 수행하기 직전에 준비하는 함수 **prepare** 작성 (sender 정보 이용)
-
 - **updateUI()** -> segue 수행한 후에 넘어온 정보를 업데이트 시킴
