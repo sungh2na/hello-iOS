@@ -11,13 +11,13 @@
 - protocol : 어떤 서비스를 이용하기 위해 해야할 일
 - 테이블뷰 서비스를 쓰기 위해 해야 할 일
 
-# 커스텀 테이블 뷰 셀
+## 커스텀 테이블 뷰 셀
 
-# 뷰컨트롤러 모달로 띄우기 
+## 뷰컨트롤러 모달로 띄우기 
 - 셀을 선택 했을 때 detailViewController 뜨도록 함
 <p align="center">
 
-<image src="segue.png" width="800">
+<image src="segue.png" >
 
 </p>
 
