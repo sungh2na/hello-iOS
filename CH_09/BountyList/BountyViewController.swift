@@ -13,6 +13,18 @@ class BountyViewController: UIViewController, UITableViewDataSource, UITableView
     let nameList = ["brook", "chopper", "franky", "luffy", "nami", "robin", "sanji", "zoro"]
     let bountyList = [3300000, 50, 44000000, 30000000, 16000000, 80000000, 77000000, 120000000]
     
+    // segue 수행하기 직전 준비하는 함수
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // DetailViewController에 데이터 전달
+        if segue.identifier == "showDetail" {
+            let vc = segue.destination as? DetailViewController
+            if let index = sender as? Int {
+                vc?.name = nameList[index]
+                vc?.bounty = bountyList[index]
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,7 +52,8 @@ class BountyViewController: UIViewController, UITableViewDataSource, UITableView
     	
     // UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showDetail", sender: nil)
+        print("--> \(indexPath.row)")
+        performSegue(withIdentifier: "showDetail", sender: indexPath.row)
     }
 }
  

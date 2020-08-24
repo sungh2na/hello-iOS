@@ -38,7 +38,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="3000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qs6-1X-bz0">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="3000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qs6-1X-bz0">
                                                     <rect key="frame" x="169" y="109" width="144" height="36"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -109,14 +109,44 @@
                                     <action selector="close:" destination="S3e-2m-QQh" eventType="touchUpInside" id="hZw-OJ-dfr"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mq6-Xw-8bd">
+                                <rect key="frame" x="50" y="100" width="314" height="448.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mq6-Xw-8bd" secondAttribute="height" multiplier="7:10" id="qM4-qU-Smk"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Luffy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBQ-eo-eVQ">
+                                <rect key="frame" x="168.5" y="586" width="77" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVC-Uz-Gge">
+                                <rect key="frame" x="124" y="668" width="166" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="mq6-Xw-8bd" firstAttribute="top" secondItem="b5k-ES-tPk" secondAttribute="top" constant="100" id="4D7-FF-s71"/>
+                            <constraint firstItem="OBQ-eo-eVQ" firstAttribute="top" secondItem="mq6-Xw-8bd" secondAttribute="bottom" constant="37.5" id="BTs-1V-kFE"/>
+                            <constraint firstItem="mq6-Xw-8bd" firstAttribute="leading" secondItem="b5k-ES-tPk" secondAttribute="leading" constant="50" id="CcP-7e-a2m"/>
+                            <constraint firstItem="eVC-Uz-Gge" firstAttribute="centerX" secondItem="OBQ-eo-eVQ" secondAttribute="centerX" id="FDC-8I-f3y"/>
+                            <constraint firstItem="eVC-Uz-Gge" firstAttribute="top" secondItem="OBQ-eo-eVQ" secondAttribute="bottom" constant="46" id="G5R-vR-uVq"/>
+                            <constraint firstItem="OBQ-eo-eVQ" firstAttribute="centerX" secondItem="mq6-Xw-8bd" secondAttribute="centerX" id="HKd-fQ-re9"/>
                             <constraint firstItem="b5k-ES-tPk" firstAttribute="trailing" secondItem="Mdy-IT-Y9v" secondAttribute="trailing" constant="16" id="P7I-4R-FFP"/>
                             <constraint firstItem="Mdy-IT-Y9v" firstAttribute="top" secondItem="b5k-ES-tPk" secondAttribute="top" constant="20" id="QGl-DF-s0l"/>
+                            <constraint firstItem="mq6-Xw-8bd" firstAttribute="centerX" secondItem="b5k-ES-tPk" secondAttribute="centerX" id="bio-Um-Etd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="b5k-ES-tPk"/>
                     </view>
+                    <connections>
+                        <outlet property="bountyLabel" destination="eVC-Uz-Gge" id="PDs-ZG-f41"/>
+                        <outlet property="imgView" destination="mq6-Xw-8bd" id="m8r-fL-Jeq"/>
+                        <outlet property="nameLabel" destination="OBQ-eo-eVQ" id="Rul-cm-qNT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zfM-jD-v1F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
