@@ -1,4 +1,4 @@
-#9. 원피스 현상금 추천 앱 만들기
+# 9. 원피스 현상금 추천 앱 만들기
 
 <image src="Resource/bountylist1.png" >
 <image src="Resource/bountylist2.png" >
