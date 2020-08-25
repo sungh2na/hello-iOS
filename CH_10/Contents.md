@@ -60,6 +60,7 @@
 <image src="Resource/mvvm2.jpeg" >
 
 </p>
+
 - View Controller는 View와 View Model을 가지고 있음.
 - View Model이 중개자 역할, View와 View Controller사이 communication
 - View Model은 Model을 가지고 있음.
