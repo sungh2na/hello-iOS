@@ -6,6 +6,8 @@
 - 코드 구조에 대한 전략
 - 클린 아키텍쳐, 디자인 패턴
 
+<br>
+
 ## Design Pattern
 
 ### MVC
@@ -22,7 +24,8 @@
 - **Controller** -> Model과 View 사이 중재자 역할
 - Massive View Controller -> View Controller 가 하는 역할이 너무 많음, 기술부채 발생
 
-
+<br>
+<br>
 
 ### MVVM 
 
@@ -37,7 +40,8 @@
 - **View** -> 화면에 보여지는 UI요소 (UIView, UIViewController)
 - **ViewModel** -> Model의 내용을 View에서 사용할 수 있게 전환 (ViewModel Class)
 
-
+<br>
+<br>
 
 ### MVC vs. MVVM
 
@@ -46,7 +50,8 @@
 - MVVM 개선점 : View Controller의 역할을 축소함
 - 많은 일을 ViewModel로 위임했기 때문에 Class의 할일이 명확해짐
 
-
+<br>
+<br>
 
 ### MVVM 실제 구현
 
@@ -55,14 +60,14 @@
 <image src="Resource/mvvm2.jpeg" >
 
 </p>
-
 - View Controller는 View와 View Model을 가지고 있음.
 - View Model이 중개자 역할, View와 View Controller사이 communication
 - View Model은 Model을 가지고 있음.
 - MVC 패턴에서 직접 Model에 접근 가능했던 것을 View Model이 막고있음
 - Model은 ViewModel과만 소통
 
-
+<br>
+<br>
 
 ### MVVM 실전
 
