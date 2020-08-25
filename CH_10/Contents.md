@@ -81,18 +81,19 @@
 <br>
 <br>
 
-## MVVM으로 리팩터링하기 #1 Model
+## MVVM으로 리팩터링하기
 
-### BountyViewController
+### 1. 계획 세우기
+- BountyViewController
 ```
     // MVVM
     
     // Model
     //  - BountyInfo
-    //  > BountyInfo 만들자
     
     // View
-    //  - ListCell, 테이블 뷰 통해서 각각의 정보를 보여줌
+    //  - ListCell, 
+    //  > 테이블 뷰 통해서 각각의 정보를 보여줌
     //  > ListCell 필요한 정보를 ViewModel한테서 받음
     //  > ListCell은 ViewModel로 부터 받은 정보로 뷰 업데이트 하기
     
@@ -100,9 +101,35 @@
     //  - BountyViewModel
     //  > BountyViewModel을 만들고, 뷰레이어에서 필요한 메서드 만들기
     //  > Model 가지고 있기, BountyInfo 들
+```
+
+
+- DetailViewController
 
 ```
-- **BountyInfo**
+    // MVVM
+    
+    // Model
+    //  - BountyInfo
+    
+    // View
+    //  - imgView, nameLabel, bountylabel
+    //  > view들은 viewModel을 통해서 구성
+    
+    // ViewModel
+    //  - DetailViewModel
+    //  > 뷰레이어에서 필요한 메서드 만들기
+    //  > Model 가지고 있기, BountyInfo 들
+```
+
+- 리팩터링 후에 사용자에게 제공하는 서비스가 그대로 제공되어야함
+
+<br>
+<br>
+
+### 2. Model
+
+- BountyViewController
 ```Swift
 struct BountyInfo {
     let name: String
@@ -118,23 +145,66 @@ struct BountyInfo {
     }
 }
 ```
-### DetailiewController
-```
-    // MVVM
+
+<br>
+<br>
+
+### 3. ViewModel
+
+- BountyViewController
+```Swift
+class BountyViewModel {
+    let bountyInfoList: [BountyInfo] = [                // Model을 가지고 있음
+        BountyInfo(name: "brook", bounty: 33000000),
+        BountyInfo(name: "chopper", bounty: 50),
+        BountyInfo(name: "franky", bounty: 44000000),
+        BountyInfo(name: "luffy", bounty: 300000000),
+        BountyInfo(name: "nami", bounty: 16000000),
+        BountyInfo(name: "robin", bounty: 80000000),
+        BountyInfo(name: "sanji", bounty: 77000000),
+        BountyInfo(name: "zoro", bounty: 120000000)
+    ]
     
-    // Model
-    //  - BountyInfo
-    //  > BountyInfo 만들자
+    var numOfBountyInfoList: Int {                      // viewModel통해서만 접근 가능
+        return bountyInfoList.count
+    }
     
-    // View
-    //  - imgView, nameLabel, bountylabel
-    //  > view들은 viewModel을 통해서 구성
-    
-    // ViewModel
-    //  - DetailViewModel
-    //  > 뷰레이어에서 필요한 메서드 만들기
-    //  > Model 가지고 있기, BountyInfo 들
+    func bountyInfo(at index: Int) -> BountyInfo {
+        return bountyInfoList[index]
+    }
+}
 
 ```
 
-- 리팩터링 후에 사용자에게 제공하는 서비스가 그대로 제공되어야함
+<br>
+
+- DetailViewController
+
+```Swift
+class DetailViewModel {
+    var bountyInfo: BountyInfo?                         // Model을 가지고 있음
+    func update(model: BountyInfo?) {                   // viewModel통해서만 접근 가능
+        bountyInfo = model
+    }
+}
+```
+
+<br>
+<br>
+
+### 4. View
+
+- BountyViewController
+```Swift
+class ListCell: UITableViewCell{
+    @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var bountyLabel: UILabel!
+    
+    func update(info: BountyInfo) {
+        imgView.image = info.image
+        nameLabel.text = info.name
+        bountyLabel.text = "\(info.bounty)"
+    }
+}
+```
