@@ -77,3 +77,64 @@
 - 중요한 원칙 - 중복 제거, 단일 책임 갖기
 - **10, 200 rule** -> 메서드는 10줄 안에 클래스는 200줄 안에 짠다.
 - **30, 400 rule** -> 이정도 지키려고 노력하기
+
+<br>
+<br>
+
+## MVVM으로 리팩터링하기 #1 Model
+
+### BountyViewController
+```
+    // MVVM
+    
+    // Model
+    //  - BountyInfo
+    //  > BountyInfo 만들자
+    
+    // View
+    //  - ListCell, 테이블 뷰 통해서 각각의 정보를 보여줌
+    //  > ListCell 필요한 정보를 ViewModel한테서 받음
+    //  > ListCell은 ViewModel로 부터 받은 정보로 뷰 업데이트 하기
+    
+    // ViewModel
+    //  - BountyViewModel
+    //  > BountyViewModel을 만들고, 뷰레이어에서 필요한 메서드 만들기
+    //  > Model 가지고 있기, BountyInfo 들
+
+```
+- **BountyInfo**
+```Swift
+struct BountyInfo {
+    let name: String
+    let bounty: Int
+    
+    var image: UIImage? {
+        return UIImage(named: "\(name).jpg")
+    }
+    
+    init(name: String, bounty: Int){
+        self.name = name
+        self.bounty = bounty
+    }
+}
+```
+### DetailiewController
+```
+    // MVVM
+    
+    // Model
+    //  - BountyInfo
+    //  > BountyInfo 만들자
+    
+    // View
+    //  - imgView, nameLabel, bountylabel
+    //  > view들은 viewModel을 통해서 구성
+    
+    // ViewModel
+    //  - DetailViewModel
+    //  > 뷰레이어에서 필요한 메서드 만들기
+    //  > Model 가지고 있기, BountyInfo 들
+
+```
+
+- 리팩터링 후에 사용자에게 제공하는 서비스가 그대로 제공되어야함
