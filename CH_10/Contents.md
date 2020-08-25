@@ -46,7 +46,7 @@
 ### MVC vs. MVVM
 
 - ViewController가 Model에 직접 접근 못하고 ViewModel이라는 Class를 새로 갖음
-- ViewController가 MVC패턴에서는 Controller 레이어에 있었는데 MVVM패턴에서는 View 레이어에 있다.
+- ViewController가 MVC패턴에서는 Controller 레이어에 있었는데 MVVM패턴에서는 View 레이어에 있음
 - MVVM 개선점 : View Controller의 역할을 축소함
 - 많은 일을 ViewModel로 위임했기 때문에 Class의 할일이 명확해짐
 
@@ -61,9 +61,9 @@
 
 </p>
 
-- View Controller는 View와 View Model을 가지고 있음.
+- View Controller는 View와 View Model을 가지고 있음
 - View Model이 중개자 역할, View와 View Controller사이 communication
-- View Model은 Model을 가지고 있음.
+- View Model은 Model을 가지고 있음
 - MVC 패턴에서 직접 Model에 접근 가능했던 것을 View Model이 막고있음
 - Model은 ViewModel과만 소통
 
