@@ -11,3 +11,6 @@
 - Datasource&Delegate 프로토콜 이용해서 CollectionView 이옹하는데 필요한 코드 작성
 
 
+## 
+- Collection View 만들고 Bounty View Controller와 dataSource, delegate로 연결
+
