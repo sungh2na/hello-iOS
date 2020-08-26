@@ -7,6 +7,25 @@
 
 - 여러 아이템을 리스트 형태로 보여주고 싶을 때 
 - **UITableViewDataSource** -> 테이블뷰 셀 몇개, 어떻게 보여줄지
+```Swift
+    // 몇개 보여줄지
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numOfBountyInfoList
+    }
+
+    // 어떻게 표현할지
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    // 재사용된 셀을 구분해서 가져오고 그 셀에 필요한 정보 가져와서 셀 업데이트하고 그 셀을 넘겨줌
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListCell  else {// ListCell로 캐스팅
+            return UITableViewCell()
+        }
+
+        let bountyInfo = viewModel.bountyInfo(at: indexPath.row)
+        cell.update(info: bountyInfo)
+        return cell
+    }
+ ```
 - **UITableViewDelegate** -> 테이블 뷰 클릭하면 어떻게 할지
 - protocol: 테이블뷰 서비스를 쓰기 위해 해야 할 일
 
