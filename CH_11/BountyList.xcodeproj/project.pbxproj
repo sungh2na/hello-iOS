@@ -14,7 +14,7 @@
 		185D257624E72490000C9418 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185D257424E72490000C9418 /* Main.storyboard */; };
 		185D257824E72491000C9418 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185D257724E72491000C9418 /* Assets.xcassets */; };
 		185D257B24E72491000C9418 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185D257924E72491000C9418 /* LaunchScreen.storyboard */; };
-		185D258324E729FD000C9418 /* BountyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D258224E729FD000C9418 /* BountyViewController.swift */; };
+		185D258324E729FD000C9418 /*  .swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D258224E729FD000C9418 /*  .swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		185D257724E72491000C9418 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		185D257A24E72491000C9418 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		185D257C24E72491000C9418 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		185D258224E729FD000C9418 /* BountyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BountyViewController.swift; sourceTree = "<group>"; };
+		185D258224E729FD000C9418 /*  .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " .swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +62,7 @@
 			children = (
 				185D256E24E72490000C9418 /* AppDelegate.swift */,
 				185D257024E72490000C9418 /* SceneDelegate.swift */,
-				185D258224E729FD000C9418 /* BountyViewController.swift */,
+				185D258224E729FD000C9418 /*  .swift */,
 				180E92CE24F58A7800874E8C /* BountyInfo.swift */,
 				185D257424E72490000C9418 /* Main.storyboard */,
 				180E92CC24F427C300874E8C /* DetailViewController.swift */,
@@ -146,7 +146,7 @@
 			files = (
 				180E92CF24F58A7800874E8C /* BountyInfo.swift in Sources */,
 				185D256F24E72490000C9418 /* AppDelegate.swift in Sources */,
-				185D258324E729FD000C9418 /* BountyViewController.swift in Sources */,
+				185D258324E729FD000C9418 /*  .swift in Sources */,
 				185D257124E72490000C9418 /* SceneDelegate.swift in Sources */,
 				180E92CD24F427C300874E8C /* DetailViewController.swift in Sources */,
 			);

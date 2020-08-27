@@ -50,6 +50,7 @@ class BountyViewController: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numOfBountyInfoList
     }
+    
     // 셀은 어떻게 표현할까요?
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) ->
         UICollectionViewCell {
@@ -69,35 +70,17 @@ class BountyViewController: UIViewController, UICollectionViewDataSource, UIColl
         performSegue(withIdentifier: "showDetail", sender: indexPath.item)
     }
      
-    // UICollectionViewDel  egateFlowLayout
+    // UICollectionViewDelegateFlowLayout
     // cell size를 계산할거다 (목표: 다양한 디바이스에서 일관적인 디자인을 보여주기위해)
-    
-    
-    
-    // UITableViewDataSource
-    // 몇개 보여줄지
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return viewModel.numOfBountyInfoList
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//    // 어떻게 표현할지
-//    // 재사용된 셀을 구분해서 가져오고 그 셀에 필요한 정보 가져와서 셀 업데이트하고 그 셀을 넘겨줌
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListCell  else {// ListCell로 캐스팅
-//            return UITableViewCell()
-//        }
-//
-//        let bountyInfo = viewModel.bountyInfo(at: indexPath.row)
-//        cell.update(info: bountyInfo)
-//        return cell
-//    }
-//
-//    // UITableViewDelegate
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print("--> \(indexPath.row)")
-//        performSegue(withIdentifier: "showDetail", sender: indexPath.row)
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemSpacing: CGFloat = 10
+        let textAreaHeight: CGFloat = 65
+        
+        let width: CGFloat = (collectionView.bounds.width - itemSpacing) / 2
+        let height: CGFloat = width * 10/7 + textAreaHeight
+        
+        return CGSize(width: width, height: height)
+    }
 }
 
     
@@ -117,7 +100,6 @@ class BountyViewModel {
         let sortedList = bountyInfoList.sorted { prev, next in
             return prev.bounty > next.bounty
         }
-        
         return sortedList
     }
     
@@ -128,7 +110,6 @@ class BountyViewModel {
     func bountyInfo(at index: Int) -> BountyInfo {
         return sortedList[index]
     }
-    
 }
 
 class GridCell: UICollectionViewCell{
@@ -142,3 +123,4 @@ class GridCell: UICollectionViewCell{
          bountyLabel.text = "\(info.bounty)"
      }
 }
+
