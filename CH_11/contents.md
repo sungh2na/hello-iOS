@@ -11,7 +11,6 @@
 - Datasource&Delegate 프로토콜 이용해서 CollectionView 이옹하는데 필요한 코드 작성
 
 <br>
-<br>
 
 ## Animation 개념
 
@@ -27,7 +26,7 @@ UIView.animation(
     }
 )
 ```
-<br>
+
 <br>
 
 ## Animation 실습
@@ -85,7 +84,6 @@ UIView.transition(with: imgView, duration: 0.3, options: .transitionFlipFromLeft
 - 이미지 뒤집기
 
 <br>
-<br>
 
 ## 뷰 속성을 이용한 Animation 실습
 - 뷰 속성을 직접 이용
@@ -93,7 +91,7 @@ UIView.transition(with: imgView, duration: 0.3, options: .transitionFlipFromLeft
     1. **position & Size** -> bounds, frame, center
     2. **Transformation** -> rotation, scale, translation
     3. **Appearance** -> backgroundColor, alpha(투명도)
-- 주의사항 : position이나 size는 autolayout과 겹치 수 있음
+- 주의사항 : position이나 size는 autolayout과 겹칠 수 있음
 
 ```Swift
 private func prepareAnimation() {
