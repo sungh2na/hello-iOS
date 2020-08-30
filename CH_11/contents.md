@@ -10,6 +10,8 @@
 - 기본적으로 애플에서 제공해주는 겍체 -> UICollectionViewFlowLayout
 - Datasource&Delegate 프로토콜 이용해서 CollectionView 이옹하는데 필요한 코드 작성
 
+<br>
+<br>
 
 ## Animation 개념
 
@@ -25,6 +27,8 @@ UIView.animation(
     }
 )
 ```
+<br>
+<br>
 
 ## Animation 실습
 
@@ -35,30 +39,30 @@ UIView.animation(
 
 
 ```Swift
-    override func viewDidLoad() {                       // 뷰 로드
-        super.viewDidLoad()
-        updateUI()
-        prepareAnimation()
-    }
+override func viewDidLoad() {                       // 뷰 로드
+    super.viewDidLoad()
+    updateUI()
+    prepareAnimation()
+}
     
-    override func viewDidAppear(_ animated: Bool) {     // 뷰가 보여진 시점
-        super.viewDidAppear(animated)
-        showAnimation()
-    }
+override func viewDidAppear(_ animated: Bool) {     // 뷰가 보여진 시점
+    super.viewDidAppear(animated)
+    showAnimation()
+}
     
-    private func prepareAnimation() {                   // 시작 
-        nameLabelCenterX.constant = view.bounds.width
-        bountyLabelCenterX.constant = view.bounds.width
-    }
+private func prepareAnimation() {                   // 시작 
+    nameLabelCenterX.constant = view.bounds.width
+    bountyLabelCenterX.constant = view.bounds.width
+}
     
-    private func showAnimation() {                      // 끝
-        nameLabelCenterX.constant = 0
-        bountyLabelCenterX.constant = 0
-        
-        UIView.animate(withDuration: 0.3) {             // 시간
-            self.view.layoutIfNeeded()
-        }
+private func showAnimation() {                      // 끝
+    nameLabelCenterX.constant = 0
+    bountyLabelCenterX.constant = 0
+       
+    UIView.animate(withDuration: 0.3) {             // 시간
+        self.view.layoutIfNeeded()
     }
+}
 ```
 
 - 시작
@@ -76,6 +80,43 @@ UIView.animation(
     - **layoutIfNeeded()** -> constant가 바뀌니까 다시 레이아웃 해줘야함
 
 ```Swift
-    UIView.transition(with: imgView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+UIView.transition(with: imgView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
 ```
 - 이미지 뒤집기
+
+<br>
+<br>
+
+## 뷰 속성을 이용한 Animation 실습
+- 뷰 속성을 직접 이용
+- animating할 수 있는 뷰의 속성
+    1. **position & Size** -> bounds, frame, center
+    2. **Transformation** -> rotation, scale, translation
+    3. **Appearance** -> backgroundColor, alpha(투명도)
+- 주의사항 : position이나 size는 autolayout과 겹치 수 있음
+
+```Swift
+private func prepareAnimation() {
+    nameLabel.transform = CGAffineTransform(translationX: view.bounds.width, y: 0).scaledBy(x:3, y:3).rotated(by:100)
+    bountyLabel.transform = CGAffineTransform(translationX: view.bounds.width, y: 0).scaledBy(x:3, y:3).rotated(by:100)
+        
+    nameLabel.alpha = 0
+    bountyLabel.alpha = 0
+}
+```
+- 우측에 3배로 커진 크기로 180도 돌아간 상태, alpha는 0
+
+ ```Swift
+UIView.animate(withDuration: 1, delay: 0,  usingSpringWithDamping: 0.6, initialSpringVelocity: 2, options: .allowUserInteraction, animations: {
+    self.nameLabel.transform = CGAffineTransform.identity
+    self.nameLabel.alpha = 1
+}, completion: nil)
+        
+UIView.animate(withDuration: 1, delay: 0.2,  usingSpringWithDamping: 0.6,initialSpringVelocity: 2, options: .allowUserInteraction, animations: {
+    self.bountyLabel.transform = CGAffineTransform.identity
+    self.bountyLabel.alpha = 1
+}, completion: nil)
+ ```
+- CGAffineTransform.identity -> 변형을 가하기 전 상태
+- nameLabel과 bountyLabel 사이에 딜레이 줄 수 있음
+
