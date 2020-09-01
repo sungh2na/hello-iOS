@@ -3,3 +3,6 @@
 - AVPlayer - 미디어를 플레이 시켜줌
 - Dark mode
 - CollectionReusableView (섹션헤더뷰) -> 여러 아이템 표현할때 ?
+
+## 홈화면 컬렉션뷰 추가
+- 커스텀 셀 만들기
