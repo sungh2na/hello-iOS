@@ -13,6 +13,7 @@ class TrackCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var trackTitle: UILabel!
     @IBOutlet weak var trackArtist: UILabel!
     
+    // 그림에서 깨어날때? 호출됨
     override func awakeFromNib() {
         super.awakeFromNib()
         trackThumbnail.layer.cornerRadius = 4
@@ -21,6 +22,9 @@ class TrackCollectionViewCell: UICollectionViewCell {
     
     func updateUI(item: Track?) {
         // TODO: 곡정보 표시하기
-        
+        guard let track = item else { return }
+        trackThumbnail.image = track.artwork
+        trackTitle.text = track.title
+        trackArtist.text = track.artist
     }
 }
