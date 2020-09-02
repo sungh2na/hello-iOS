@@ -35,3 +35,11 @@
         }
     }
 ```
+
+## 플레이어뷰 구현
+- 싱글톤 객체 만들기
+- 플레이어뷰를 여기저기서 쓸 수 있음
+
+```Swift
+static let shared = SimplePlayer()
+'''
