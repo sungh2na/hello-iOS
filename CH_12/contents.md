@@ -43,3 +43,19 @@
 ```Swift
 static let shared = SimplePlayer()
 '''
+
+- 홈화면에서 클릭했을때 플레이어뷰로 연결
+```Swift
+extension HomeViewController: UICollectionViewDelegate {
+    // 클릭했을때 어떻게 할까?
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // TODO: 곡 클릭시 플레이어뷰 띄우기
+        let playerStoryboard = UIStoryboard.init(name: "Player", bundle: nil)   // Player.storyboard 가져오기
+        guard let playerVC = playerStoryboard.instantiateViewController(identifier: "PlayerViewController") as? // storyboard ID 가 identifier
+            PlayerViewController else { return }
+        let item = trackManager.tracks[indexPath.item]
+        playerVC.simplePlayer.replaceCurrentItem(with: item)
+        present(playerVC, animated: true, completion: nil)
+    }
+}
+```
