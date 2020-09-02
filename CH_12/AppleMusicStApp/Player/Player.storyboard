@@ -43,7 +43,7 @@
                                     <constraint firstAttribute="width" constant="55" id="ahU-ZY-R3p"/>
                                     <constraint firstAttribute="height" constant="55" id="nXb-ht-R4L"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="play.fill" catalog="system">
+                                <state key="normal" image="play.fill" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
                                 </state>
                             </button>
