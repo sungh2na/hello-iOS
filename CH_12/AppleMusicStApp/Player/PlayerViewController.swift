@@ -48,19 +48,26 @@ class PlayerViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) { // 사라지기 직전에 호출
         super.viewWillDisappear(animated)
         // TODO: 뷰나갈때 처리 > 심플플레이어
+        simplePlayer.pause()
+        simplePlayer.replaceCurrentItem(with: nil)
         
     }
     
     @IBAction func beginDrag(_ sender: UISlider) {
-        isSeeking = true
+        isSeeking = true    // drag 시작
     }
     
     @IBAction func endDrag(_ sender: UISlider) {
-        isSeeking = false
+        isSeeking = false    // drag 끝남
     }
     
     @IBAction func seek(_ sender: UISlider) {
         // TODO: 시킹 구현
+        guard let currentItem = simplePlayer.currentItem else { return }
+        let position = Double(sender.value)     // 0...1
+        let seconds = position * currentItem.duration.seconds
+        let time = CMTime(seconds: seconds, preferredTimescale: 100)
+        simplePlayer.seek(to: time)
     }
     
     @IBAction func togglePlayButton(_ sender: UIButton) {
@@ -100,7 +107,7 @@ extension PlayerViewController {
         if isSeeking == false {
             // 노래 들으면서 시킹하면, 자꾸 슬라이더가 업데이트 됨, 따라서 시킹아닐때마 슬라이더 업데이트하자
             // TODO: 슬라이더 정보 업데이트
-            
+            timeSlider.value = Float(simplePlayer.currentTime/simplePlayer.totalDurationTime)
         }
     }
     
