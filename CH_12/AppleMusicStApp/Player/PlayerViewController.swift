@@ -41,7 +41,7 @@ class PlayerViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {    // 보이기 직전에 호출
         super.viewWillAppear(animated)
-        updateTintColor()
+        updateTintColor()       // 다크모드에서는 흰색, 라이트모드에서는 검은색
         updateTrackInfo()
     }
     
@@ -92,7 +92,7 @@ extension PlayerViewController {
     }
     
     func updateTintColor() {
-        playControlButton.tintColor = DefaultStyle.Colors.tint
+        playControlButton.tintColor = DefaultStyle.Colors.tint      // 이거 없애면 파란색
         timeSlider.tintColor = DefaultStyle.Colors.tint
     }
     
