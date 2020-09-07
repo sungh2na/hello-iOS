@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CrN-Me-azh">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="TodoListViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Dac-Tr-eM7">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zSd-Yg-cbT">
                                     <size key="itemSize" width="414" height="90"/>
@@ -27,14 +27,14 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TodoListCell" id="zMR-ih-2eg" customClass="TodoListCell" customModule="TodoList" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="90"/>
+                                        <rect key="frame" x="-19.666666666666668" y="50" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fNz-0l-Zae">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3WF-UV-HWy">
-                                                    <rect key="frame" x="20" y="27.5" width="35" height="35"/>
+                                                    <rect key="frame" x="20" y="27.666666666666671" width="35" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="35" id="qX3-me-Vck"/>
                                                         <constraint firstAttribute="height" constant="35" id="xMF-qC-1oS"/>
@@ -49,13 +49,13 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👻 Weekly iOS Meeting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08j-Gj-d6W">
-                                                    <rect key="frame" x="71" y="34.5" width="278" height="21"/>
+                                                    <rect key="frame" x="71" y="34.666666666666664" width="278" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJ9-j4-CFT">
-                                                    <rect key="frame" x="359" y="27.5" width="35" height="35"/>
+                                                    <rect key="frame" x="359" y="27.666666666666671" width="35" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="35" id="lgp-Ff-dOe"/>
                                                         <constraint firstAttribute="height" constant="35" id="wzg-KM-aOv"/>
@@ -69,7 +69,7 @@
                                                     </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1EQ-iP-ReF">
-                                                    <rect key="frame" x="65" y="44.5" width="250" height="1"/>
+                                                    <rect key="frame" x="65" y="44.666666666666664" width="250" height="1"/>
                                                     <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="IEI-Ox-Tvy"/>
@@ -100,11 +100,11 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TodoListHeaderView" id="3sY-ig-xV7" customClass="TodoListHeaderView" customModule="TodoList" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bx0-LT-Q56">
-                                            <rect key="frame" x="20" y="10.5" width="71" height="29"/>
+                                            <rect key="frame" x="20" y="10.666666666666664" width="71" height="29"/>
                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -141,12 +141,61 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-297.10144927536237" y="886.60714285714278"/>
+            <point key="canvasLocation" x="-298" y="1593"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="myx-UA-bk6">
+            <objects>
+                <tableViewController id="9hF-6R-3F5" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Z5k-rK-4gm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="8sh-50-KbO">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8sh-50-KbO" id="teC-2z-uJi">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9hF-6R-3F5" id="YCw-0t-tyw"/>
+                            <outlet property="delegate" destination="9hF-6R-3F5" id="4WZ-CS-F2o"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="Axm-Cx-CCs"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JQW-Q0-yy7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="652" y="1592"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="PCK-IB-GKb">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="CrN-Me-azh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BDJ-gm-RUM">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="h5i-DE-Iwa"/>
+                        <segue destination="9hF-6R-3F5" kind="relationship" relationship="viewControllers" id="BUQ-FY-cAP"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hfb-5s-bHm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-298.39999999999998" y="885.96059113300498"/>
         </scene>
     </scenes>
     <resources>
-        <image name="checkmark.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="circle" catalog="system" width="64" height="60"/>
-        <image name="xmark.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="circle" catalog="system" width="128" height="121"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>
