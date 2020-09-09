@@ -138,9 +138,9 @@ class TodoListCell: UICollectionViewCell {
     
     private func showStrikeThrough(_ show: Bool) {
         if show {
-            strikeThroughWidth.constant = descriptionLabel.bounds.width
+            strikeThroughWidth.constant = descriptionLabel.bounds.width     // 줄 보여줘야 할 때
         } else {
-            strikeThroughWidth.constant = 0
+            strikeThroughWidth.constant = 0                                 // 줄 감출 때
         }
     }
     
@@ -151,6 +151,7 @@ class TodoListCell: UICollectionViewCell {
     
     @IBAction func checkButtonTapped(_ sender: Any) {
         // TODO: checkButton 처리
+        // 뷰에서는 구현하지 않음
         
 
     }
