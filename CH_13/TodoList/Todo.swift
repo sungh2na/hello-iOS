@@ -32,7 +32,7 @@ struct Todo: Codable, Equatable {
 
 class TodoManager {     // 뷰에서 이용함
     
-    static let shared = TodoManager()
+    static let shared = TodoManager()       // 싱글톤 객체 -> 여기저기서 사용 가능
     
     static var lastId: Int = 0
     
@@ -40,23 +40,34 @@ class TodoManager {     // 뷰에서 이용함
     
     func createTodo(detail: String, isToday: Bool) -> Todo {
         //TODO: create로직 추가
-        return Todo(id: 1, isDone: false, detail: "2", isToday: true)
+        
+        let nextId = TodoManager.lastId + 1
+        TodoManager.lastId = nextId
+        return Todo(id: nextId, isDone: false, detail: detail, isToday: isToday)
     }
     
     func addTodo(_ todo: Todo) {
         //TODO: add로직 추가
+        todos.append(todo)
+        saveTodo()
     }
     
     func deleteTodo(_ todo: Todo) {
         //TODO: delete 로직 추가
-        
+        todos = todos.filter { $0.id != todo.id }         // 가독성 더 높음
+//        if let index = todos.firstIndex(of: todo) {     // 방대한 데이터에서 더 효율적임
+//            todos.remove(at: index)
+//        }
+        saveTodo()
     }
     
     func updateTodo(_ todo: Todo) {
         //TODO: updatee 로직 추가
-        
+        guard let index = todos.firstIndex(of: todo) else { return }
+        todos[index].update(isDone: todo.isDone, detail: todo.detail, isToday: todo.isToday)
+        saveTodo()
     }
-    
+     
     func saveTodo() {
         Storage.store(todos, to: .documents, as: "todos.json")
     }
@@ -69,7 +80,7 @@ class TodoManager {     // 뷰에서 이용함
     }
 }
 
-class TodoViewModel {
+class TodoViewModel {       // Todo Manager 에 접근함   // Controller에서 ViewModel에 접근
     
     enum Section: Int, CaseIterable {
         case today
