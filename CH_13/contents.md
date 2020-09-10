@@ -19,3 +19,16 @@
 - NSCoding 처럼 간단하고 적은 데이터로 관리하기 매우 적합한 기능
 - JSON 형태를 쉽게 다룰 수 있게 해줌
 - NSCoding 보다 덜 복잡하고 직관적임
+
+<br>
+
+## 탭바 컨트롤러 구성하기
+- Editor - Embed In - Tab Bar Controller
+- 설정 탭 추가 -> 테이블 뷰 컨트롤러 추가 - 탭바 컨트롤러와 연결 - view controllers
+- 설정 아이콘 (gear)
+
+## 스태틱 테이블뷰로 설정페이지 구현하기
+- Table View - Content - Static Cells
+- Table View Section에 헤더 넣을 수 있음
+
+## 태스크 관리뷰, 컬렉션뷰 구현하기
