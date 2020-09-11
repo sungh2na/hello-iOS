@@ -125,15 +125,16 @@ class TodoListCell: UICollectionViewCell {
     
     @IBOutlet weak var strikeThroughWidth: NSLayoutConstraint!
     
+    // 클로저들, 뷰 객체가 다른 모델이나 로직을 건들이지 않게 하기 위해 사용. 외부에서 필요한 로직 구현
     var doneButtonTapHandler: ((Bool) -> Void)?
     var deleteButtonTapHandler: (() -> Void)?
     
-    override func awakeFromNib() {
+    override func awakeFromNib() {      // 스토리 보드에서 깨어났을 때 리셋
         super.awakeFromNib()
         reset()
     }
     
-    override func prepareForReuse() {
+    override func prepareForReuse() {   // 화면 밖으로 나가서 재사용될 때
         super.prepareForReuse()
         reset()
     }
@@ -142,9 +143,9 @@ class TodoListCell: UICollectionViewCell {
         // TODO: 셀 업데이트 하기
         checkButton.isSelected = todo.isDone
         descriptionLabel.text = todo.detail
-        descriptionLabel.alpha = todo.isDone ? 0.2 : 1
-        deleteButton.isHidden = todo.isDone == false
-        showStrikeThrough(todo.isDone)
+        descriptionLabel.alpha = todo.isDone ? 0.2 : 1      // 완료 되었을 경우 투명도 조절
+        deleteButton.isHidden = todo.isDone == false        // 완료 되지 않았으면 딜리트 버튼 숨김
+        showStrikeThrough(todo.isDone)                      // 완료 되었으면 밑줄 쫙
     }
     
     private func showStrikeThrough(_ show: Bool) {
@@ -157,14 +158,24 @@ class TodoListCell: UICollectionViewCell {
     
     func reset() {
         // TODO: reset로직 구현
+        descriptionLabel.alpha = 1
+        deleteButton.isHidden = true
+        showStrikeThrough(false)
         
     }
     
     @IBAction func checkButtonTapped(_ sender: Any) {
         // TODO: checkButton 처리
         // 뷰에서는 구현하지 않음
+        // 뷰 업데이트
+        checkButton.isSelected = !checkButton.isSelected
+        let isDone = checkButton.isSelected
+        showStrikeThrough(isDone)
+        descriptionLabel.alpha = isDone ? 0.2 : 1
+        deleteButton.isHidden = !isDone
         
-
+        // 데이터 업데이트
+        doneButtonTapHandler?(isDone)       // 클로저, 실제 데이터의 변경
     }
     
     @IBAction func deleteButtonTapped(_ sender: Any) {
