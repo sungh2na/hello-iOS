@@ -32,3 +32,13 @@
 - Table View Section에 헤더 넣을 수 있음
 
 ## 태스크 관리뷰, 컬렉션뷰 구현하기
+- TodoManager -> Todo 객체를 관리해줌
+- TodoViewModel -> TodoManager에 접근함, Controller에서는 TodoViewModel에 접근
+
+## 컬렉션뷰 구현하기
+- 뷰 객체가 다른 모델이나 로직을 건들이지 않게 하기 위해 클로저 사용
+- 외부에서 필요한 로직 구현
+```Swift
+    var doneButtonTapHandler: ((Bool) -> Void)?
+    var deleteButtonTapHandler: (() -> Void)?
+```
