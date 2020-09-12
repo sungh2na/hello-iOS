@@ -31,7 +31,7 @@
 - Table View - Content - Static Cells
 - Table View Section에 헤더 넣을 수 있음
 
-## 태스크 관리뷰, 컬렉션뷰 구현하기
+## 태스크 관리뷰, 뷰모델 구현
 - TodoManager -> Todo 객체를 관리해줌
 - TodoViewModel -> TodoManager에 접근함, Controller에서는 TodoViewModel에 접근
 
@@ -42,3 +42,35 @@
     var doneButtonTapHandler: ((Bool) -> Void)?
     var deleteButtonTapHandler: (() -> Void)?
 ```
+
+## struct를 jason으로 인코딩 시켜서 disk에 저장
+```Swift
+func saveTodo() {
+        Storage.store(todos, to: .documents, as: "todos.json")
+    }
+```
+- 여러가지 형태로 데이터를 주고 받을 때 jason파일 주로 사용
+
+```
+// jason
+{
+    "id" : 1,
+    "detail" : "aaaa",
+    "isDone" : false,
+    "isToday" : true
+}
+```
+
+```Swift
+struct Todo: Codable, Equatable {
+    let id: Int
+    var isDone: Bool
+    var detail: String
+    var isToday: Bool
+}
+```
+- ***jason***은 중괄호 안에 키, 밸류 형태로 되어있음, 딕셔너리 형태
+- 데이터를 파싱해서 (스위프트가 알아볼 수 있는 형태의 오브젝트로 만듦) 앱 내에서 사용
+- ***Codable***이 jason의 파일을 스위프트가 알아 볼 수 있는 struct 형태로 바꿔줌
+- struct가 codable 프로토콜을 따르면 아주 쉽게 jason 형태의 data로 만들 수 있고(Encodable)
+반대로 jason형태의 데이터를 struct로 만들 수 있음(Decodable)
