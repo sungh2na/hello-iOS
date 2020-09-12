@@ -74,3 +74,4 @@ struct Todo: Codable, Equatable {
 - ***Codable***이 jason의 파일을 스위프트가 알아 볼 수 있는 struct 형태로 바꿔줌
 - struct가 codable 프로토콜을 따르면 아주 쉽게 jason 형태의 data로 만들 수 있고(Encodable)
 반대로 jason형태의 데이터를 struct로 만들 수 있음(Decodable)
+- 인코딩 된 jason 데이터를 **FileManager**가 스토리지에 저장해주고 반대로 불러와줌
