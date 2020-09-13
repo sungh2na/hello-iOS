@@ -88,8 +88,8 @@ class TodoViewModel {       // Todo Manager 에 접근함   // Controller에서 
         
         var title: String {
             switch self {
-            case .today: return "Today"
-            default: return "Upcoming"
+                case .today: return "Today"
+                default: return "Upcoming"
             }
         }
     }
