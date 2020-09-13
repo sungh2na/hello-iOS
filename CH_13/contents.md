@@ -51,16 +51,6 @@ func saveTodo() {
 ```
 - 여러가지 형태로 데이터를 주고 받을 때 jason파일 주로 사용
 
-```
-// jason
-{
-    "id" : 1,
-    "detail" : "aaaa",
-    "isDone" : false,
-    "isToday" : true
-}
-```
-
 ```Swift
 struct Todo: Codable, Equatable {
     let id: Int
@@ -75,3 +65,33 @@ struct Todo: Codable, Equatable {
 - struct가 codable 프로토콜을 따르면 아주 쉽게 jason 형태의 data로 만들 수 있고(Encodable)
 반대로 jason형태의 데이터를 struct로 만들 수 있음(Decodable)
 - 인코딩 된 jason 데이터를 **FileManager**가 스토리지에 저장해주고 반대로 불러와줌
+
+<br>
+
+```Swift
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // *test* todo 객체 만들어서 스토리지에 쓰기
+        let todo = TodoManager.shared.createTodo(detail: "👍🌈 Corona 난리", isToday: true)
+        Storage.saveTodo(todo, fileName: "test.jason")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // *test* 확인
+        let todo = Storage.restoreTodo("test.jason")
+        print("---> restore from disk: \(todo)")
+    }
+```
+
+```
+// test.jason 파일
+{
+    "id" : 1,
+    "detail" : "👍🌈 Corona 난리",
+    "isDone" : false,
+    "isToday" : true
+}
+```
