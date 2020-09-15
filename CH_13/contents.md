@@ -1,5 +1,7 @@
 # 12. Todo 리스트 앱
 
+<image src="Resource/todolist1.png" >
+
 ## TodoList 앱 소개
     - Any.do st 앱
     - 테스크 관리(추가, 편집, 삭제)
@@ -44,6 +46,7 @@
 ```
 
 ## struct를 jason으로 인코딩 시켜서 disk에 저장
+
 ```Swift
 func saveTodo() {
         Storage.store(todos, to: .documents, as: "todos.json")
