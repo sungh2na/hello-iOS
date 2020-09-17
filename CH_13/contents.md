@@ -1,4 +1,4 @@
-# 12. Todo 리스트 앱
+# 13. Todo 리스트 앱
 
 <image src="Resource/todolist1.png" >
 
