@@ -57,26 +57,26 @@ GCD provides and manages FIFO queues to which your application can submit tasks 
 - 스레드 위에 만들어진 녀석
 - 큐를 이용해서 테스크 관리
 - **Dispatch Queue**의 타입
-    - 1. Main Queue : 메인 스레드에서 작동, UI관련 사용자 인터렉션 처리
+    1. Main Queue : 메인 스레드에서 작동, UI관련 사용자 인터렉션 처리
     ```Swift
     // Main Queue
     DispatchQueue.main.asyns {
         // Do Any UI Update Here
     }
     ```
-    - 2. Global Queue : 시스템에의해 관리되는 큐, Qos(Quality of Service)로 우선순위 표현
-        - 1. userInteractive
-        - 2. userInitiated
-        - 3. default
-        - 4. utility - 네트워킹, 파일 불러오기 등
-        - 5. background - 당장 필요 없는 것, 영상 다운 등
+    2. Global Queue : 시스템에의해 관리되는 큐, Qos(Quality of Service)로 우선순위 표현
+        1. userInteractive
+        2. userInitiated
+        3. default
+        4. utility - 네트워킹, 파일 불러오기 등
+        5. background - 당장 필요 없는 것, 영상 다운 등
     ```Swift
     // Global Queue
     DispatchQueue.global(qos: .background).async {
         Do Haevey Work Here
     }
     ```
-    - 3. Custom Queue - 직접 큐 생성해서 관리
+    3. Custom Queue - 직접 큐 생성해서 관리
 
     ```Swift
     // Custom Queue
