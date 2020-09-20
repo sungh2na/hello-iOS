@@ -77,15 +77,16 @@ GCD provides and manages FIFO queues to which your application can submit tasks 
     }
     ```
     - 3. Custom Queue - 직접 큐 생성해서 관리
+
     ```Swift
     // Custom Queue
     let concurrentQueue = DispatchQueue(label: "concurrent", qos: .background, attributes: .concurrent)
     let serialQueue = DispatchQueue(label: "serial", qos: .background)
     ```
-        - 두개의 Queue 같이 쓰기 - 이미지 다운받고 그것을 업데이트 해주는 일처럼 작업간에 의존성 있을 경우
 
     ```Swift
     // Custom Queue
+    // 두개의 Queue 같이 쓰기 - 이미지 다운받고 그것을 업데이트 해주는 일처럼 작업간에 의존성 있을 경우
     DispatchQueue.global(qos: .background).async {
         let image = downloadImageFromServere()
         DispatchQueue.main.async {
@@ -93,6 +94,63 @@ GCD provides and manages FIFO queues to which your application can submit tasks 
         }
     }
     ```
+- sync & Async
+```
+DispatchQueue.global(qos: .background).async {
+    for i in 0...5 {
+        print("😈 \(i)")
+    }
+}
+DispatchQueue.global(qos: .userInteractive).async {
+    for i in 0...5 {
+        print("😥 \(i)")
+    }
+}
+
+/*
+😥 0
+😈 0
+😥 1
+😈 1
+😥 2
+😈 2
+😥 3
+😥 4
+😥 5
+😈 3
+😈 4
+😈 5
+*/
+```
+    - 두번째 큐의 qos가 첫번째 큐보다 높기 떄문에 첫번째가 끝나기 전에 뒤에 작업이 시작
+```
+DispatchQueue.global(qos: .background).sync {
+    for i in 0...5 {
+        print("😈 \(i)")
+    }
+}
+DispatchQueue.global(qos: .userInteractive).async {
+    for i in 0...5 {
+        print("😥 \(i)")
+    }
+}
+/*
+😈 0
+😈 1
+😈 2
+😈 3
+😈 4
+😈 5
+😥 0
+😥 1
+😥 2
+😥 3
+😥 4
+😥 5
+*/
+```
+    - 첫번째가 우선순위가 낮아도 앞에 작업이 다 끝나야지만 뒤에 작업이 사작함
+    - 무거운 작업은 대부분 async로 진행
 
 ## URL Session 개념
 
