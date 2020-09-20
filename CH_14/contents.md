@@ -46,3 +46,54 @@
 - UI관련, 사용자 인터렉션 관련 처리는 메인 스레드에서 함
 - 복잡한 계산이나 네트워킹 처리는 다른 스레드에서 함
 
+## GCD 실습
+- Grand Central Patch
+
+```
+GCD provides and manages FIFO queues to which your application can submit tasks in the form of block objects. Work submitted to dispatch queues are executed on a pool of threads fully managed by the system. No quarantee is made as to the thread on which a task executes.           - Apple document
+```
+
+- 해야할 일(코드 블럭)들을 만들어서 GCD를 넘기면 시스템에서 알아서 스레드 할당해서 안전하게 수행시켜 줌
+- 스레드 위에 만들어진 녀석
+- 큐를 이용해서 테스크 관리
+- **Dispatch Queue**의 타입
+    - 1. Main Queue : 메인 스레드에서 작동, UI관련 사용자 인터렉션 처리
+    ```Swift
+    // Main Queue
+    DispatchQueue.main.asyns {
+        // Do Any UI Update Here
+    }
+    ```
+    - 2. Global Queue : 시스템에의해 관리되는 큐, Qos(Quality of Service)로 우선순위 표현
+        - 1. userInteractive
+        - 2. userInitiated
+        - 3. default
+        - 4. utility - 네트워킹, 파일 불러오기 등
+        - 5. background - 당장 필요 없는 것, 영상 다운 등
+    ```Swift
+    // Global Queue
+    DispatchQueue.global(qos: .background).async {
+        Do Haevey Work Here
+    }
+    ```
+    - 3. Custom Queue - 직접 큐 생성해서 관리
+    ```Swift
+    // Custom Queue
+    let concurrentQueue = DispatchQueue(label: "concurrent", qos: .background, attributes: .concurrent)
+    let serialQueue = DispatchQueue(label: "serial", qos: .background)
+    ```
+        - 두개의 Queue 같이 쓰기 - 이미지 다운받고 그것을 업데이트 해주는 일처럼 작업간에 의존성 있을 경우
+
+    ```Swift
+    // Custom Queue
+    DispatchQueue.global(qos: .background).async {
+        let image = downloadImageFromServere()
+        DispatchQueue.main.async {
+            self.imageView.image = image
+        }
+    }
+    ```
+
+## URL Session 개념
+
+## URL Session 실습
