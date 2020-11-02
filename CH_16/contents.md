@@ -5,11 +5,13 @@
 
 - Build better apps
     - 더 잘만들게 (개발속도 향상)
+    - cloud Firestore
+    - ML Kit 을 이용한 머신러닝 백앤드 서비스
+    - cloud Functions
     - 사용자 인증
     - 호스팅
-    - 클라우드 저장소
+    - cloud Storage
     - Realtime Database
-    - ML Kit 을 이용한 머신러닝 백앤드 서비스
 
 - Improve app quality
     - 앱 퀄리티 향상을 위한 기능 제공
@@ -20,5 +22,10 @@
 - Grow your app
     - 비즈니스적 성장을 도와줌
     - 이벤트 로깅을 통한 분석
-    - Remote config
-    - A/B Testing
+    - 예측
+    - Firebase A/B 테스팅
+    - 클라우드 메시징
+    - 원격 구성
+    - 동적 링크
+    - 앱 색인 생성
+    - 초대
