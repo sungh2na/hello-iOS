@@ -153,5 +153,23 @@ DispatchQueue.global(qos: .userInteractive).async {
     - 무거운 작업은 대부분 async로 진행
 
 ## URL Session 개념
+- 실제 ios 앱에서 http를 이용하여 네트워킹 하는 방법
+- URLSession API
+    - URLSession은 URLSessionComfiguration 이용하여 생성
+    - URLSession은 여러개의 URLSessionTask를 만들 수 있음, 이를 통해 실제로 서버와 통신함
+    - Delegate를 통해서 네트워킹 중간 과정을 확인해 볼 수 있음
+
+    - **URLSessionConfiguration** 생성 할 때 타입
+    - Default -> 기본 통신
+    - Ephemeral -> 쿠키, 캐시 저장 안함
+    - Background -> 앱이 백그라운드 있을 때 다운로드 업로드할 때
+
+    - **URLSessionTask** 작업에 따라 세가지로 나뉨
+    - URLSessionDataTask -> 데이터 받는 작업, response 데이터를 메모리 상에서 처리, background session 지원 안됨
+    - URLSessionUploadTask -> 파일 업로드 할 때
+    - URLSessionDownloadTask -> 파일을 다운 받아서 디스크에 쓸 때
+
+    
 
 ## URL Session 실습
+
