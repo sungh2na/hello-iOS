@@ -82,6 +82,32 @@ urlComponents.queryItems?.append(entityQuery)
 urlComponents.queryItems?.append(termQuery)
 let requestURL = urlComponents.url!
 
+struct Response: Codable {  // Jason이라는 데이터를 원하는 오브젝트로 파싱하기 위해 Codable 준수
+    let resultCount: Int
+    let tracks: [Track]
+    
+    enum CodingKeys: String, CodingKey {
+        case resultCount
+        case tracks = "results"
+    }
+}
+
+struct Track: Codable {
+    let title: String
+    let artistName: String
+    let thumbnailPath: String
+    
+    enum CodingKeys: String, CodingKey {
+        case title = "trackName"
+        case artistName
+        case thumbnailPath = "artworkUrl30"
+    }
+    
+    // trackName
+    // artistName
+    // artworkUrl30
+}
+
 let dataTask = session.dataTask(with: requestURL) { (data, response, error) in
     guard error == nil else { return }
     
@@ -93,11 +119,48 @@ let dataTask = session.dataTask(with: requestURL) { (data, response, error) in
         return
     }
     
-    guard let resultData = data else { return }
+    guard let resultData = data else { return } // json파일의 데이터 형태
     let resultString = String(data: resultData, encoding: .utf8)
     
-    print("---> result: \(resultData)")
-    print("---> resultString : \(resultString)")    // postman에 requestURL보내서 확인
+//    print("---> result: \(resultData)")
+//    print("---> resultString : \(resultString)")    // postman에 requestURL보내서 확인
+
+
+    // URL Session - 3
+    
+    // 목표: 트랙리스트 오브젝트로 가져오기
+    
+    // 하고 싶은 욕구 목록
+    // - Data -> Track 목록으로 가져오고 싶다 {Track}
+    // - Track 오브젝트로 만들어야겠다
+    // - Data에서 struct로 파싱하고 싶다 -> Codable 이용해서 만들자
+    //   - Jason 파일, 데이터 -> 오브젝트 (Codable 이용하겠다)
+    //   - Response, Track 이렇게 두개 만들어야겠다
+    
+    // 해야할 일
+    // - Response, Track struct
+    // - struct의 프로퍼티 이름과 실제 데이터의 키와 맞추기 (Codable 디코딩하게 하기 위해서)
+    // - 파싱하기 (Decoding)
+    // - 트랙리스트 가져오기
+    
+    
+    
+    
+    // 파싱 및 트랙 가져오기
+    
+    do {
+        let decoder = JSONDecoder()
+        let response = try decoder.decode(Response.self, from: resultData)
+        let tracks = response.tracks
+        
+        print("---> tracks: \(tracks.count) - \(tracks.first?.title)- \(tracks.last?.thumbnailPath)")
+    } catch let error {
+        print("---> error: \(error.localizedDescription)")
+    }
+    
 }
 
 dataTask.resume()
+
+
+
