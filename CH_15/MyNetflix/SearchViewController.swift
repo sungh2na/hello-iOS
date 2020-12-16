@@ -42,6 +42,7 @@ extension SearchViewController: UISearchBarDelegate {
         
         SearchAPI.search(searchTerm) { movies in
             // collectionView로 표현하기
+            print("---> 몊개 넘어왔어?? \(movies.count), 첫번째 꺼 제목: \(movies.first?.title)")
         }
         print("---> 검색어: \(searchTerm)")
     }
@@ -51,12 +52,10 @@ class SearchAPI {
     // 인스턴스 메서드 아닌 타입 메서드로 구현
     static func search(_ term: String, completion: @escaping ([Movie]) -> Void) {
         let session = URLSession(configuration: .default)
-        
         var urlComponents = URLComponents(string: "https://itunes.apple.com/search?")!
         let mediaQuery = URLQueryItem(name: "media", value: "movie")
         let entityQuery = URLQueryItem(name: "entity",  value: "movie")
         let termQuery = URLQueryItem(name: "term", value: term)
-        
         urlComponents.queryItems?.append(mediaQuery)
         urlComponents.queryItems?.append(entityQuery)
         urlComponents.queryItems?.append(termQuery)
@@ -68,26 +67,56 @@ class SearchAPI {
                 completion([])
                 return
             }
+            
             guard let resultData = data else {
                 completion([])
                 return
             }
-            
-            // data -> [Movie]
-            let string = String(data: resultData, encoding: .utf8)
 
-            print("--> result:\(string)")
-            
-//            completion([Movie])
+            let movies = SearchAPI.parseMovies(resultData)
+            completion(movies)
         }
         dataTask.resume()
     }
+    
+    static func parseMovies(_ data: Data) -> [Movie] {
+        let decoder = JSONDecoder()
+        
+        do {
+            let response = try decoder.decode(Response.self, from: data)
+            let movies = response.movies
+            return movies
+        } catch let error {
+            print( "--> parsing error: \(error.localizedDescription)")
+            return[]
+        }
+        
+    }
 }
 
-struct Response {
+// json데이터를 실제 오브젝트로 파싱하기위해 Codable사용
+struct Response: Codable {
+    let resultCount: Int
+    let movies: [Movie]
+    
+    // json key랑 맞춰주기
+    enum CodingKeys: String, CodingKey {
+        case resultCount
+        case movies = "results"
+    }
     
 }
 
-struct Movie {
+struct Movie: Codable {
+    let title: String
+    let director: String
+    let thumbnailPath: String
+    let previewURL: String
     
+    enum CodingKeys: String, CodingKey {
+        case title  = "trackName"
+        case director = "artistName"
+        case thumbnailPath = "artworkUrl100"
+        case previewURL = "previewUrl"
+    }
 }
