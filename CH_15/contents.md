@@ -28,7 +28,13 @@
                 guard let searchTerm = searchBar.text, searchTerm.isEmpty == false else { return }
 
             // 네트워킹을 통한 검색
-            print("---> 검색어: \(searchBar.text)")
+            print("---> 검색어: \(searchTerm)")
       }
     }
     ```
+
+## SearhAPI 구현
+    - 목표: searchTerm을 가지고 네트워킹을 통해서 영화 검색
+    - 검색 API가 필요
+    - 결과를 받아올 모델 Movie, Response
+    - 결과를 받아와서, collectionView로 표현하기
