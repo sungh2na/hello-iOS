@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SearchViewController: UIViewController {
     
@@ -31,7 +32,12 @@ extension SearchViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.backgroundColor = .red
+        // imagePath(String) -> image
+        // KingFisher 코드 가져다 쓰기 (Swift Package Manager 이용, SPM)
+        let movie = movies[indexPath.item]
+        let url = URL(string: movie.thumbnailPath)
+        cell.movieThumbnail.kf.setImage(with: url)
+        
         return cell
     }
     
@@ -84,8 +90,11 @@ extension SearchViewController: UISearchBarDelegate {
             // collectionView로 표현하기
             print("---> 몇 개 넘어왔어?? \(movies.count), 첫번째 꺼 제목: \(movies.first?.title)")
             
-            self.movies = movies
-            self.resultCollectionView.reloadData()
+            // 메인스레드로 조정
+            DispatchQueue.main.async {
+                self.movies = movies
+                self.resultCollectionView.reloadData()
+            }
         }
         print("---> 검색어: \(searchTerm)")
     }
