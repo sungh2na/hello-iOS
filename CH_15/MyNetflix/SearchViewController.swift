@@ -13,11 +13,51 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var resultCollectionView: UICollectionView!
     
+    var movies: [Movie] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+}
+
+extension SearchViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return movies.count
+
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultCell", for: indexPath) as? ResultCell else {
+            return UICollectionViewCell()
+        }
+        
+        cell.backgroundColor = .red
+        return cell
+    }
+    
     
 }
+
+extension SearchViewController: UICollectionViewDelegate {
+    
+}
+
+extension SearchViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let margin: CGFloat = 8
+        let itemSpacing: CGFloat = 10
+        
+        let width = (collectionView.bounds.width - margin * 2 - itemSpacing * 2) / 3
+        let height = width * 10/7
+        return CGSize(width: width, height: height)
+    }
+}
+
+class ResultCell: UICollectionViewCell {
+    @IBOutlet weak var movieThumbnail: UIImageView!
+}
+
+
 
 extension SearchViewController: UISearchBarDelegate {
     
@@ -42,7 +82,10 @@ extension SearchViewController: UISearchBarDelegate {
         
         SearchAPI.search(searchTerm) { movies in
             // collectionView로 표현하기
-            print("---> 몊개 넘어왔어?? \(movies.count), 첫번째 꺼 제목: \(movies.first?.title)")
+            print("---> 몇 개 넘어왔어?? \(movies.count), 첫번째 꺼 제목: \(movies.first?.title)")
+            
+            self.movies = movies
+            self.resultCollectionView.reloadData()
         }
         print("---> 검색어: \(searchTerm)")
     }
