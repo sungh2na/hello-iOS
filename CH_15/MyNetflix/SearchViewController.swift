@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import AVFoundation
 
 class SearchViewController: UIViewController {
     
@@ -52,9 +53,13 @@ extension SearchViewController: UICollectionViewDelegate {
         // presenting player vc
         
         let movie = movies[indexPath.item]
+        let url = URL(string: movie.previewURL)!
+        let item = AVPlayerItem(url: url)
         
         let sb = UIStoryboard(name: "Player", bundle: nil)
         let vc = sb.instantiateViewController(identifier: "PlayerViewController") as! PlayerViewController
+        // 재생에 필요한 아이템 전달
+        vc.player.replaceCurrentItem(with: item)
         vc.modalPresentationStyle = .fullScreen
         
         present(vc, animated: false, completion: nil)

@@ -22,11 +22,38 @@ class PlayerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        playerView.player = player
     }
     
+    // 클릭하자마자 플레이 되도록, 보여지기 직전에 호출
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        play()
+    }
 
     @IBAction func togglePlayButton(_ sender: Any) {
+        if player.isPlaying {
+            pause()
+        } else {
+            play()
+        }
+        
         playButton.isSelected = !playButton.isSelected
+    }
+    
+    func play() {
+        player.play()
+        playButton.isSelected = true
+    }
+    
+    func pause() {
+        player.pause()
+        playButton.isSelected = false
+    }
+    
+    func reset() {
+        pause()
+        player.replaceCurrentItem(with: nil)
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {
