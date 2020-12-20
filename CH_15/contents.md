@@ -10,7 +10,6 @@
 - seach버튼 클릭했을 때 실행되는 메서드 구현
 - 검색이 완료되면 키보드 내려가도록 처리
 - 검색어가 없을 경우는 무시
-
     ```Swift
     extension SearchViewController: UISearchBarDelegate {
     
@@ -85,13 +84,47 @@
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultCell", for: indexPath) as? ResultCell else {
                 return UICollectionViewCell()
             }
-        
+
             // imagePath(String) -> image
             // KingFisher 코드 가져다 쓰기 (Swift Package Manager 이용, SPM)
+
             let movie = movies[indexPath.item]
             let url = URL(string: movie.thumbnailPath)
             cell.movieThumbnail.kf.setImage(with: url)
         
             return cell
         }
+    ```
+
+## 플레이어뷰 가로모드 구현
+- 영상을 갖고 있는 movie라는 객체
+- 영상을 틀어줄 playerViewController가 있어야 함
+- 이후 playerVC + movie 로 올려주고
+- player vc를 통해 영상을 재생
+
+    ```Swift
+    extension SearchViewController: UICollectionViewDelegate {
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            // movie
+            // player vc
+            // player vc + movie
+            // presenting player vc
+
+            let movie = movies[indexPath.item]
+        
+            let sb = UIStoryboard(name: "Player", bundle: nil)
+            let vc = sb.instantiateViewController(identifier: "PlayerViewController") as! PlayerViewController
+            vc.modalPresentationStyle = .fullScreen // iphone10 이상 fullscreen 지원하기 위해
+
+            present(vc, animated: false, completion: nil)
+        }
+    }
+    ```
+- play에 관련된 요소들은 PlayerViewController에서 관리
+    - 가로모드 전환을 위해 (landscape/ Left/ Right)
+
+    ```Swift
+        override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .landscapeRight
+    }
     ```
