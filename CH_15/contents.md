@@ -128,3 +128,32 @@
         return .landscapeRight
     }
     ```
+
+## 플레이어뷰 UI구성
+- https://developer.apple.com/documentation/avfoundation/avplayerlayer
+- AVPlayer에서 내는 visual output에 대해 담당하는 것이 AVPlayerLayer
+- 커스텀 클래스를 연결해줌
+```Swift
+import UIKit
+import AVFoundation
+
+class PlayerView: UIView {
+    var player: AVPlayer? {
+        get {
+            return playerLayer.player
+        }
+        set {
+            playerLayer.player = newValue
+        }
+    }
+    
+    var playerLayer: AVPlayerLayer {
+        return layer as! AVPlayerLayer
+    }
+    
+    // Override UIView property
+    override static var layerClass: AnyClass {
+        return AVPlayerLayer.self
+    }
+}
+```
