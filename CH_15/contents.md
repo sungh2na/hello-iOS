@@ -157,3 +157,14 @@ class PlayerView: UIView {
     }
 }
 ```
+
+## 플레이어 구현
+- 뷰 컨트롤러가 메모리에 올라올 때, playerView에 player 설정
+- 뷰 컨트롤러가 보여지기 직전에 play() 호출, 클릭하자 마자 보여지도록
+- toggle에서 play중이면 pause, 아니면 play
+- PlayerViewController를 호출하는 곳에서 재생에 필요한 아이템을 설정해 줘야함
+```Swift
+let url = URL(string: movie.previewURL)!
+let item = AVPlayerItem(url: url)
+vc.player.replaceCurrentItem(with: item)
+```
