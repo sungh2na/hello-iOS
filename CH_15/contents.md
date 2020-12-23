@@ -12,15 +12,15 @@
 - 검색어가 없을 경우는 무시
     ```Swift
     extension SearchViewController: UISearchBarDelegate {
-    
+
         private func dismissKeyboard() {
-            searchBar.resignFirstResponder()    // 첫번째 응답을 그만두게 함.
+            searchBar.resignFirstResponder()    // 첫번째 응답을 그만두게 함
         }
-    
+
         func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
             // 검색 시작
-        
-            // 키보드가 올라와 있을 때, 내려가게 처리
+
+            // 키보드가 올라와 있을 때, 내려가게 처리            
             dismissKeyboard()
         
             // 검색어가 있는지
@@ -167,4 +167,28 @@ class PlayerView: UIView {
 let url = URL(string: movie.previewURL)!
 let item = AVPlayerItem(url: url)
 vc.player.replaceCurrentItem(with: item)
+```
+
+## 오늘의 영화 구현
+- totoro 에 대한 정보를 검색API로 가져온다
+- 거기서 totoro 객체 하나를 가져온다
+- 그 객체를 이용해서 PlayerViewController를 띄운다
+```Swift
+@IBAction func playButtonTapped(_ sender: Any) { 
+    SearchAPI.search("totoro") { movies in
+        guard let totoro = movies.first else { return }
+            
+        DispatchQueue.main.async {
+            let url = URL(string: totoro.previewURL)!
+            let item = AVPlayerItem(url: url)
+            let sb = UIStoryboard(name: "Player", bundle: nil)
+            let vc = sb.instantiateViewController(identifier: "PlayerViewController") as! PlayerViewController
+            vc.player.replaceCurrentItem(with: item)
+                
+            vc.modalPresentationStyle = .fullScreen
+            elf.present(vc, animated: false, completion: nil)
+        }
+    }
+        
+}
 ```
