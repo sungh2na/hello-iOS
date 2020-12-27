@@ -45,3 +45,8 @@
 - cocoapods - 루비 기반의 외부 개발도구 관리 모듈
 
 ## CocoaPods 설치
+- terminal
+- sudo gem install cocoapods -n /usr/local/bin
+- pod --version
+
+## Firebase iOS SDK 설치
