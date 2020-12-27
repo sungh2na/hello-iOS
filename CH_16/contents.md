@@ -39,4 +39,9 @@
 - Crashlytics - 앱의 안전성 확인
 
 ## 외부라이브러리 관리 모듈 CocoaPods 소개
+- Firebase ios SDK
+- SDK? Software Development Kit , 개발도구
+- firebase 기능들을 앱에 접목하기 위한 개발도구
+- cocoapods - 루비 기반의 외부 개발도구 관리 모듈
 
+## CocoaPods 설치
