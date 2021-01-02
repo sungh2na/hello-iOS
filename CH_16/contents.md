@@ -50,3 +50,10 @@
 - pod --version
 
 ## Firebase iOS SDK 설치
+- firebase.google.com
+- cocoapods 설치 
+- pod init 을 통해서 pod 파일 만들기
+- pod 파일 안에 pod 'Firebase/Analytics' 
+- pod install
+- 앱 시작할때 FirebaseApp.configure() -> 실제 Firebase와 통신하는 것 확인 가능
+
