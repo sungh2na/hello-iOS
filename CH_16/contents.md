@@ -57,3 +57,39 @@
 - pod install
 - 앱 시작할때 FirebaseApp.configure() -> 실제 Firebase와 통신하는 것 확인 가능
 
+## Realtime Database에서 데이터 가져오기
+- 서버에 데이터 저장하거나 가져오거나 할 때 서버 공부하지 않고도 가능하게 해줌
+- Firebase - 빌드 - Realtime Database - 데이터베이스 만들기 - 테스트모드
+- https://firebase.google.com/docs/database/ios/start
+- Podfile에 pod 'Firebase/Database' 입력하고 pod install
+```Swift
+import UIKit
+import Firebase
+
+class ViewController: UIViewController {
+    
+    var db = Database.database().reference()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+}
+```
+- 빌드 실패하면 
+    - Product - Clean Build Folder
+- firebase 에서 데이터 추가
+    - firstData - Hello Firebase!!!
+- firstData 값 가져오기    
+    ```Swift
+    db.child("firstData").observeSingleEvent(of: .value) { snapshot in
+            print("---> \(snapshot)")
+        }
+    ```
+    * 오류 * `[FIRApp configure];` (`FirebaseApp.configure()` in Swift) could not find a valid GoogleService-Info.plist in your project.
+        -> GoogleService-Info.plist 삭제후 다시 추가해줌
+    - snapshot에 값이 들어가게 됨
+- 값 저장하기
+    ```Swift
+    let value = snapshot.value as? String ?? ""
+    ```
