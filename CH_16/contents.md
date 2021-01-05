@@ -93,3 +93,6 @@ class ViewController: UIViewController {
     ```Swift
     let value = snapshot.value as? String ?? ""
     ```
+## Realtime Database에 데이터 추가하기
+- Firebase child ("key").setVaue(Value)
+- string, number, dictionary, array 전달 가능
