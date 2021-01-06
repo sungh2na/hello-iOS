@@ -96,3 +96,51 @@ class ViewController: UIViewController {
 ## Realtime Database에 데이터 추가하기
 - Firebase child ("key").setVaue(Value)
 - string, number, dictionary, array 전달 가능
+- 원하는 object 만들어서 저장 가능 - 서점 고객 데이터
+- Dictionary 형태로 만들어서 보냄
+```Swift
+// 서점 고객
+struct Customer {
+    let id: String
+    let name: String
+    let books: [Book]
+    
+    var toDictionary: [String: Any] {
+        let booksArray = books.map { $0.toDictionary }
+        let dict: [String: Any] = ["id": id, "name": name, "books": booksArray]
+        return dict
+    }
+    
+    static var id: Int = 0  // Customer.id
+}
+
+struct Book {
+    let title: String
+    let author: String
+    
+    var toDictionary: [String: Any] {
+        let dict: [String: Any] = ["title": title, "author": author]
+        return dict
+    }
+}
+
+    func saveCustomers() {
+        // 북가게
+        // 사용자를 저장하겠다
+        // 모델 Customer + Book
+        // 세 선수가 각각 책을 두권씩 삼
+        let books = [Book(title: "Good to Great", author: "someone"), Book(title: "Hacking Growth", author: "Somebody")]
+        let customer1 = Customer(id: "\(Customer.id)", name: "Son", books: books)
+        Customer.id += 1
+        let customer2 = Customer(id: "\(Customer.id)", name: "Dele", books: books)
+        Customer.id += 1
+        let customer3 = Customer(id: "\(Customer.id)", name: "Kene", books: books)
+        Customer.id += 1
+        
+        db.child("customers").child(customer1.id).setValue(customer1.toDictionary)
+        db.child("customers").child(customer2.id).setValue(customer2.toDictionary)
+        db.child("customers").child(customer3.id).setValue(customer3.toDictionary)
+    }
+```
+
+## Realtime Database에서 데이터 파싱하기
