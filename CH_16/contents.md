@@ -144,3 +144,19 @@ struct Book {
 ```
 
 ## Realtime Database에서 데이터 파싱하기
+- 커스텀 데이터를 가져와서 Customer 개수 표시하기
+    - 데이터를 받아와서 고객 struct 로 파싱해야함 -> Codable 이용가능한지
+    - Customer 개수 표시
+
+```Swift
+extension ViewController {
+    func fetchCustomers() {
+        db.child("customers").observeSingleEvent(of: .value) { (snapshot) in
+            print("--> \(snapshot.value)")
+        }
+    }
+}
+```
+<image src="Resource/snapshot.png" >
+
+- 이 데이터를 jason으로 만들기
