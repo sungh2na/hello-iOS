@@ -158,5 +158,25 @@ extension ViewController {
 }
 ```
 <image src="Resource/snapshot.png" >
-
+- snapshot 에서 내려온 데이터가 json형태니까 json데이터로 만들어서 codable로 쉽게 파싱
 - 이 데이터를 jason으로 만들기
+
+```Swift
+func fetchCustomers() {
+        db.child("customers").observeSingleEvent(of: .value) { (snapshot) in
+            print("--> \(snapshot.value)")
+            do {
+                let data = try JSONSerialization.data(withJSONObject: snapshot.value, options: [])
+                
+                // 디코더 만들고 디코딩하고 싶은 타입을 넘겨준다 가능하면 디코드 해서 customers 만들어줌
+                let decoder = JSONDecoder()
+                let customers: [Customer] = try decoder.decode([Customer].self, from: data)
+                
+                print("---> customers.count: \(customers.count)")
+            } catch let error {
+                print("---> error: \(error.localizedDescription)")
+            }
+        }
+    }
+```
+
