@@ -180,3 +180,22 @@ func fetchCustomers() {
     }
 ```
 
+## Realtime Database에서 데이터 수정 및 삭제
+- 저장 - 초록
+- 수정 - 노랑
+- 삭제 - 빨강
+
+```Swift
+    func updateBasicTypes() {
+        db.updateChildValues(["int": 6])
+        db.updateChildValues(["double": 5.4])
+        db.updateChildValues(["str": "변경된 스트링"])
+    }
+
+    func deleteBasicTypes() {
+        db.child("int").removeValue()
+        db.child("double").removeValue()
+        db.child("str").removeValue()
+    }
+```
+
