@@ -198,4 +198,9 @@ func fetchCustomers() {
         db.child("str").removeValue()
     }
 ```
-
+- Develop
+    - Realtime Database 말고도 Cloud Firestore도 있음
+    - Storage 에서는 이미지나 동영상 넣어둘 수 있음
+    - Hosting 웹사이트
+    - Function 서버 API
+    
