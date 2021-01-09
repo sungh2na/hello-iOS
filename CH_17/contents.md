@@ -10,8 +10,9 @@
 - 창문이 스크롤뷰, 창문을 통해 바라보는 풍경이 컨텐츠뷰에 대응
 - 스크롤뷰 넣어서 뷰와 constraints 모두 설정해 줘도 빨간색 뜸
     - 안에 컨텐츠뷰 추가
-        - 스크롤 뷰 - Leading, top, trailing, bottom
-        - 전체 뷰 - equal widths, equal heights
+        - 컨텐츠뷰 사이즈 정하기
+        - 스크롤뷰 - Leading, top, trailing, bottom
+        - 전체뷰 - equal widths, equal heights
         - Height -> Priority를 낮게 설정, 다른 외부 요인에 의해 늘어날 수 있음
     - Priority
         - Required (1000)
@@ -19,6 +20,9 @@
         - Low (250)
     
 ## 스크롤뷰와 오토레이아웃 적용
+- 이미지 뷰와 vertical stack view - view 넣어줌
+- simulated Size - Freeform 설정하면 넘어가는 부분도 볼 수 있음
+
 ## containerView를 활용한 네스티드
 ## 네스티드 스크롤뷰 구현 마무리 및 정리
 ## 파이어베이스 설정하기
