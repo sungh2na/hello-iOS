@@ -20,10 +20,14 @@
         - Low (250)
     
 ## 스크롤뷰와 오토레이아웃 적용
-- 이미지 뷰와 vertical stack view - view 넣어줌
+- 이미지 뷰와 vertical stack view - view 넣어서 확인
 - simulated Size - Freeform 설정하면 넘어가는 부분도 볼 수 있음
 
 ## containerView를 활용한 네스티드
+- 스택뷰 안에 컨테이너뷰를 넣음
+- 컨테이너뷰 높이 지정
+- 뷰컨트롤러 embeded 
+
 ## 네스티드 스크롤뷰 구현 마무리 및 정리
 ## 파이어베이스 설정하기
 ## 검색어 서버에 저장하기
