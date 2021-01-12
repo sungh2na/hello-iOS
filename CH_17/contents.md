@@ -31,6 +31,8 @@
 - RecommendListViewController와 연결시켜줌.
 
 ## 네스티드 스크롤뷰 구현 마무리 및 정리
+- UpComingViewController 만들어서 공개예정 뷰에 연결
+
 ## 파이어베이스 설정하기
 ## 검색어 서버에 저장하기
 ## 검색어 서버에 가져오기
