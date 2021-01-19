@@ -40,7 +40,14 @@
 ## 파이어베이스 설정하기
 - 백앤드에서 검색한 내용들을 서버에 다 올린 다음 가져와서 저장한 컨텐츠 목록 보여주기
 - firebase의 realtime database 이용
-- 
+- firebase 들어가서 프로젝트 만들기
+- cocoapod 이용해서 firebase software development kit 다운
+    - pod 'Firebase/Analytics'
+    - pod 'Firebase/Database'
+- swift package manager가 이미 깔려 있는 상태에서 cocoapod을 통해 또 외부 코드 가져올 때 문제 발생할 수 있음
+    - swift package manager에 있는 것들을 다시 다운받으면 됨
+    - Project - Swift Packages - Location - version ( exact -> Up to Next Major ) 다시 빌드
+- realtime Database 만들기
 
 ## 검색어 서버에 저장하기
 ## 검색어 서버에 가져오기
