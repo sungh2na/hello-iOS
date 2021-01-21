@@ -50,5 +50,7 @@
 - realtime Database 만들기
 
 ## 검색어 서버에 저장하기
+- 서치했던 것을 realtime database에 보내기
+
 ## 검색어 서버에 가져오기
 ## 검색 히스토리 표시하기
