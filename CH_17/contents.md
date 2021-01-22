@@ -51,6 +51,25 @@
 
 ## 검색어 서버에 저장하기
 - 서치했던 것을 realtime database에 보내기
+- root database 가져와서 그 child 로 searhHistory
+
+```Swift
+    let db = Database.database().reference().child("searchHistory")
+        SearchAPI.search(searchTerm) { movies in
+            DispatchQueue.main.async {
+                self.movies = movies
+                self.resultCollectionView.reloadData()
+    
+                // 유닉스 타임스템프? 현재시간을 유니크하게 표현
+                let timestamp: Double = Date().timeIntervalSince1970.rounded()  // 소수점 버림
+                // db에 id는 자동으로 만들고 그 child의 value값은 딕셔너리
+                self.db.childByAutoId().setValue(["term": searchTerm, "timestamp": timestamp])
+            }
+        }
+```
+<image src="Resource/1.png" >
 
 ## 검색어 서버에 가져오기
+
+
 ## 검색 히스토리 표시하기
