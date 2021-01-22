@@ -69,17 +69,17 @@
 ```
 <image src="Resource/1.png" >
 
-## 검색어 서버에 가져오기
+## 검색어 서버에서 가져오기
 - 서버에서 저장한 데이터 가져와서 저장한 콘텐츠 목록에 표시
-- 커스텀뷰컨트롤러 만들어서 연결 후 테이블 뷰 넣음
+- 커스텀뷰컨트롤러 만들어서 연결 후 테이블 뷰 넣음 
 - searchHistory 노드를 가리키는 db
 - 데이터와서 프린트
 ```Swift
     // searchHistory 노드를 가리키고 있음
     let db = Database.database().reference().child("searchHistory")
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         db.observeSingleEvent(of: .value) { (snapshot) in
             print("---> snapshot: \(snapshot.value)")
@@ -88,3 +88,33 @@
 ```
 
 ## 검색 히스토리 표시하기
+- 받아온 데이터를 JSON 형태로 바꾸고 Codable로 만든 모델에 디코드시켜줌
+    - snapshot.value.values -> array 안에 dictionary가 여러개 있는 형태 , dictionary가 표현하는 것이 searchTerm
+    -> 하나씩 프린트 해보기
+    - 서버에서 내려주는 JSON데이터가 Key와 Value형태로 되어있고 이것이 Codable로 만든 모델 프로퍼티 이름과 같아야함.
+- 최근에 검색한 데이터가 앞에 오도록 정렬
+```Swift
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        db.observeSingleEvent(of: .value) { (snapshot) in
+            guard let searchHistory = snapshot.value as? [String: Any] else { return }
+            let datas = Array(searchHistory.values) 
+            // json형태의 데이터로 바꿔줌
+            let data = try! JSONSerialization.data(withJSONObject: datas, options: [] )
+            let decoder = JSONDecoder()
+            let searchTerms = try! decoder.decode([SearchTerm].self, from: data)
+            // timestamp를 이용해서 최근에 검색한 데이터가 앞에 나오도록 함
+            self.searchTerms = searchTerms.sorted(by: { (term1, term2) in
+                return term1.timestamp > term2.timestamp
+            })
+            
+            self.tableView.reloadData()
+        }
+    }
+
+struct SearchTerm: Codable {
+    let term: String
+    let timestamp: TimeInterval
+}
+```
