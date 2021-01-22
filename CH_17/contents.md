@@ -70,6 +70,21 @@
 <image src="Resource/1.png" >
 
 ## 검색어 서버에 가져오기
+- 서버에서 저장한 데이터 가져와서 저장한 콘텐츠 목록에 표시
+- 커스텀뷰컨트롤러 만들어서 연결 후 테이블 뷰 넣음
+- searchHistory 노드를 가리키는 db
+- 데이터와서 프린트
+```Swift
+    // searchHistory 노드를 가리키고 있음
+    let db = Database.database().reference().child("searchHistory")
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        db.observeSingleEvent(of: .value) { (snapshot) in
+            print("---> snapshot: \(snapshot.value)")
+        }
+    }
+```
 
 ## 검색 히스토리 표시하기
