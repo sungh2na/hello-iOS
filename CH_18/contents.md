@@ -49,8 +49,22 @@
         - 인풋에서 들어온 데이터를 디스크에 쓰던지 프로세싱할 때 쓰임
 
 ## 사용자 권한 요청에 대한 이해
+- 사용자에 대한 데이터가 들어올 수 있는 마이크, 카메라 등을 사용하려면 사용자에게 허락을 받아야 함
+- Info.plist
+    - camera, mic usage description
+    - 사진찍기 전 permission 요청
+    - 사진 저장전 Photo Library Permission 요청
+
 ## 풀스크린카메라앱 소개 및 디바이스 권한 요청
+- 풀스크린 앱, 가운데 캡쳐버튼, 왼쪽에 앨범 버튼, 오른쪽 상단에 카메라 전환버튼
+- 사용자 권한 받기 
+    - Info.plist
+    - Privacy - Camera Usage Description 추가
+    - Privacy - Photo Library Usage Description 추가
+    - 사용자에게 보여줄 메세지 추가
+
 ## 캡쳐세션 주요 요소 추가
+
 ## 캡쳐세션 구성하고 시작하기
 ## 카메라 바꾸기 구현 1
 ## 카메라 바꾸기 구현 2
