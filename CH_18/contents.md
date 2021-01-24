@@ -69,7 +69,6 @@
 - AVCapturePhotoOutput
 - Queue 커스텀큐만들어서 비디오 관련 프로세싱 여기서 수행
 - AVCaptureDevice DiscoverySession 디바이스에서 카메라를 찾아오는 기능
-
 - AVCam 과 관련된 Apple Document 소스코드 다운받아서 PreviewView 만들기
 - view로드 될 때 previewView session과 cature session 연결
 - session의 인풋과 아웃풋 구성해주고
@@ -77,6 +76,61 @@
 - setup UI
 
 ## 캡쳐세션 구성하고 시작하기
+- presetSetting 하기 -> 포토, 해상도 등
+- beginConfiguration
+- Add Video Input -> 디바이스 인풋과 캡쳐세션 연결하기
+- Add Photo Output -> 아웃풋과 캡쳐세션 연결하기
+- commitConfiguration
+
+- beginConfiguration과 commitConfiguration 사이에 디바이스 인풋과 데이터 아웃풋 연결
+    - 디바이스 인풋
+
+```Swift
+// 디바이스 인풋은 핸드폰에 있는 카메라를 찾을때 조건
+let videoDeviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera, .builtInWideAngleCamera, .builtInTrueDepthCamera], mediaType: .video, position: .unspecified)
+
+        // 그중에서 제일 먼저 발견된 것을 가져와서 실제 디바이스 인풋을 구성
+        var defaultVideoDevice: AVCaptureDevice?
+        guard let camera = videoDeviceDiscoverySession.devices.first else {
+            captureSession.commitConfiguration()
+            return
+        }
+        do {
+            let videoDeviceInput = try AVCaptureDeviceInput(device: camera)
+            
+            if captureSession.canAddInput(videoDeviceInput) {
+                captureSession.addInput(videoDeviceInput)
+            } else {
+                captureSession.commitConfiguration()
+                return
+            }
+        } catch let error {
+            captureSession.commitConfiguration()
+            return
+        }
+```
+
+    - 포토아웃풋
+    - 어떤 세팅으로 사진 저장할 것인지 선언 -> jpeg타입을 저장
+    - 포토아웃풋을 세션에 넣음
+
+```Swift
+let photoOutput = AVCapturePhotoOutput()
+
+    photoOutput.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])], completionHandler: nil)
+        
+        if captureSession.canAddOutput(photoOutput) {
+            captureSession.addOutput(photoOutput)
+        } else {
+            captureSession.commitConfiguration()
+            return
+        }
+        captureSession.commitConfiguration()
+
+```
+
+    - 메인 스레드가 아닌 특정 스레드에서 작업을 수행 세션 큐 만들어서 수행
+
 ## 카메라 바꾸기 구현 1
 ## 카메라 바꾸기 구현 2
 ## 사진 찍고 저장하기
