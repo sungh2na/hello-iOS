@@ -63,7 +63,18 @@
     - Privacy - Photo Library Usage Description 추가
     - 사용자에게 보여줄 메세지 추가
 
-## 캡쳐세션 주요 요소 추가
+## 캡쳐세션 주요 요소 추가, setup UI
+- captureSession: 인풋 디바이스에서 오디오, 비디오 데이터 가져옴
+- AVCaptureDeviceInput
+- AVCapturePhotoOutput
+- Queue 커스텀큐만들어서 비디오 관련 프로세싱 여기서 수행
+- AVCaptureDevice DiscoverySession 디바이스에서 카메라를 찾아오는 기능
+
+- AVCam 과 관련된 Apple Document 소스코드 다운받아서 PreviewView 만들기
+- view로드 될 때 previewView session과 cature session 연결
+- session의 인풋과 아웃풋 구성해주고
+- session 시작하면 디바이스 인풋에 있는 미디어 데이터가 들어오고 preview에 보여줌
+- setup UI
 
 ## 캡쳐세션 구성하고 시작하기
 ## 카메라 바꾸기 구현 1
