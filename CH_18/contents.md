@@ -82,6 +82,8 @@
 - Add Photo Output -> 아웃풋과 캡쳐세션 연결하기
 - commitConfiguration
 
+<image src="Resource/AVCam.png" >
+
 - beginConfiguration과 commitConfiguration 사이에 디바이스 인풋과 데이터 아웃풋 연결
     - 디바이스 인풋
 
@@ -143,4 +145,63 @@ let photoOutput = AVCapturePhotoOutput()
     - UI작업은 세션큐가 아닌 메인큐에서 해야함
 
 ## 사진 찍고 저장하기
+- orientation
+    - 미디어에서 들어온 데이터가 사진이 되어서 밖으로 나갈때 사진에대한 오리엔테이션을 설정
+    - previewView가 가지고 있는 오리엔테이션을 사진에도 적용
 
+- photoOutput
+    - 캡쳐 세션에서 사진 찍는 것을 요청
+
+```Swift
+    @IBAction func capturePhoto(_ sender: UIButton) {
+        // TODO: photoOutput의 capturePhoto 메소드
+        // orientation
+        let videoPreviewLayerOrientation = self.previewView.videoPreviewLayer.connection?.videoOrientation
+        sessionQueue.async {
+            let connection = self.photoOutput.connection(with: .video)
+            connection?.videoOrientation = videoPreviewLayerOrientation!
+            
+            // photoOutput
+            let setting = AVCapturePhotoSettings()
+            self.photoOutput.capturePhoto(with: setting, delegate: self)
+        }
+    }
+```
+    - delegate로 후처리 가능
+
+<image src="Resource/captureDelegate.png" >
+
+    - didFinishProcessingPhoto
+        - 사진에 대해 프로세싱이 끝났으면 그 사진을 저장해야 함 
+```Swift
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        // TODO: capturePhoto delegate method 구현
+
+        guard error == nil else { return }
+        guard let imageData = photo.fileDataRepresentation() else { return }
+        guard let image = UIImage(data: imageData) else { return }
+        self.savePhotoLibrary(image: image)
+    }
+```
+    - savePhotoLibrary
+        - capture한 이미지 포토라이브러리에 저장
+        - 먼저 사용자한테 허락받고 허가 되었으면 이미지를 포토라이브러리에 넣음
+    
+```Swift
+    func savePhotoLibrary(image: UIImage) {
+
+        PHPhotoLibrary.requestAuthorization { status in
+            if status == .authorized {
+                PHPhotoLibrary.shared().performChanges({PHAssetChangeRequest.creationRequestForAsset(from: image)}) { (success, error) in
+                    print(" --> 이미지 저장 완료했나? \(success)")
+                }
+            } else {
+                print("--> 권한 다시 요청")
+            }
+        }
+    }
+``
+- 더 공부하고 싶으면
+    - learning AV Foundation 책
+    - AVCam apple document 
+    
