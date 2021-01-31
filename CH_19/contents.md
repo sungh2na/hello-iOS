@@ -42,7 +42,10 @@
     - 워크플로우가 이렇게 단순화 됨
     - 이것을 통해 개와 고양이를 분류하는 앱 만들기
 
-## CreateML 실습 01
+## CreateML 실습 
+- 머신러닝 모델 만들기
+- Xcode - Open Developer tool - Create ML
+- newDocument - Choose a Template - Image Classifier
 
 ## CreateML 실습 02
 
