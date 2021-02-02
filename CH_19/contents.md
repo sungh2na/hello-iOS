@@ -47,9 +47,10 @@
 - Xcode - Open Developer tool - Create ML
 - newDocument - Choose a Template - Image Classifier
 
-## CreateML 실습 02
-
 ## 머신러닝 모델 정확도
+- 어떻게하면 더 정확한 모델을 만들 수 있을까
+- Maximum Iterations 반복 학습하기
+- Agument Date 같은 문제를 다각화로 고민
 
 ## 어떤 모델을
 
