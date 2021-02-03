@@ -37,6 +37,7 @@
     - 모델평가 
     - Export 해서 씀
     - Images, Text, , Tabular Data
+    
 <image src="4.png" >
 
     - 워크플로우가 이렇게 단순화 됨
