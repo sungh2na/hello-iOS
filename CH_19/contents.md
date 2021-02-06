@@ -53,6 +53,13 @@
 - Maximum Iterations 반복 학습하기
 - Agument Date 같은 문제를 다각화로 고민
 
-## 어떤 모델을
+## 실제로 더 정확한 모델 만들기
+- 트레이닝 데이터 많이 (1000개)
+- 강아지 고양이 500개씩
+- iteration 40번 - 오버피팅? 여지가 있음
+- Precision, Recall 둘다 높게 나오면 좋음
+- https://developer.apple.com/documentation/createml/improving_your_model_s_accuracy
+    - 이미지 augmentation ( 자르거나 돌리거나 흐리게 등등)
+- core ml wwdc 2019
 
 ## 앱에 내가 만든
