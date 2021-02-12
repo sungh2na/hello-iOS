@@ -94,9 +94,15 @@
         - 식별 가능한 값과 특정 값의 쌍이 필요할 때 등 사용
 
 ## 아키텍쳐
-- MVC, MVVM MVC 사용자가 Controller를 조작하면 Controller는 Model을 통해서 데이터를 가져오고 
-그 정보를 바탕으로 시각적인 표현을 담당하는 View를 제어해서 사용자에게 전달
+- MVC
+    - Model -> 앱 내애서 사용하는 데이터 (Struct, class)
+    - View -> 화면에 보여지는 UI요소 (UIView)
+    - Controller -> Model과 View 사이 중재자 역할
 
+- MVVM
+    - Model -> 앱 내애서 사용하는 데이터 (Struct)
+    - View -> 화면에 보여지는 UI요소 (UIView, UIViewController)
+    - ViewModel -> Model의 내용을 View에서 사용할 수 있게 전환 (ViewModel Class)
 
 
 - 상속과 POP의 차이점
