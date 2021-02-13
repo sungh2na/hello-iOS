@@ -7,13 +7,15 @@
     - Suspended: 앱이 Background 상태에 있지만, 아무 코드도 실행하지 않는 상태, 시스템이 임의로 Background 상태의 앱을 Suspended 상태로 만듦
 
 - 뷰컨트롤러 생명주기
-    - Init
-    - loadView
-    - ViewDidLoad -> 뷰컨트롤러가 로드될 때 한번만 실행, 초기화
-    - ViewWillAppear -> 뷰컨트롤러가 화면에 나타나기 직전 수행
-    - ViewDidAppear -> 뷰컨트롤러가 화면에 나타난 직후 수행, 애니메이션 등
-    - ViewDidDisappear -> 뷰가 완전히 사라지고 나서 수행
+    - init
+    - Loadview
+    - ViewDidLoad -> 뷰 컨트롤러가 메모리에 로드됐을 때 처음 한번만 실행, 초기화
+    - ViewWillAppear -> 뷰 컨트롤러가 화면에 나타나기 직전 항상 실행
+    - ViewDidAppear -> 뷰 컨트롤러가 화면에 나타난 직후 애니메이션 등
+    - ViewWillDisappear -> 뷰 컨트롤러가 화면에서 사라지기 직전 호출
+    - ViewDidDisappear -> 뷰 컨트롤러가 완전히 사라지고 나서 호출
     - ViewDidUnload
+    -> 앱 실행중에는 ViewWillAppear 부터 ViewDidDisappear까지 순환
 
 - 오토레이아웃이 적용되는시점
     - ViewWillAppear와 ViewDidAppear 사이에 viewWillLaydoutSubview() 메서드를 호출한다.
@@ -93,16 +95,34 @@
         - 배열과 달리 딕셔너리에 없는 키에 접근해도 오류가 발생하지 않음 (단, nil 반환)
         - 식별 가능한 값과 특정 값의 쌍이 필요할 때 등 사용
 
+- 프롵토콜
+    - 특정 기능을 실행하기 위해 필요한 요구사항을 정의한 것 
+
+- 위임을 위한 프로토콜 (Delegation)
+    - 클래스나 구조체가 자신의 책임이나 임무를 다른 타입의 인스턴스에게 위임하는 디자인 패턴
+    - 책무를 위임하기 위해 정의한 프로토콜을 준수하는 타입은 자신에게 위임될 일정 책무를 할 수 있다는 것을 보장
+    - 위임은 사용자 특정 행동에 반응하기 위해 사용되기도 하며, 비동기 처리에도 많이 사용됨
+    - 위임패턴은 애플의 프레임워크에서 사용하는 주요한 패턴 중 하나
+    - 예를들어 UITableView타입의 인스턴스가 해야하는 일을 위임받아 처리하는 인스턴스는 UITableViewDelegate 프로토콜 준수하면 됨
+    - 위임받은 인스턴스, 즉 UITableViewDelegate프로토콜을 준수하는 인스턴스는 UITableView의 인스턴스가 해야하는 일을 대신 처리해줄 수 있음
+
+- delegate 패턴
+    - 델리게이트는 어떤 객체가 해야 하는 일을 부분적으로 확장해서 대신 처리
+    - 대신 처리해줄 객체와 대친 처리하라고 시키는 객체
+
 ## 아키텍쳐
 - MVC
-    - Model -> 앱 내애서 사용하는 데이터 (Struct, class)
-    - View -> 화면에 보여지는 UI요소 (UIView)
-    - Controller -> Model과 View 사이 중재자 역할
+    - Model -> 앱 내애서 사용하는 데이터와 데이터 처리부 (Struct, class)
+    - View -> 사용자 인터페이스, 화면에 보여지는 UI요소 (UIView)
+    - Controller -> Model과 View 사이 중재자 역할, 사용자 입력처리 및 모델변화를 감지하여 화면 갱신
 
 - MVVM
     - Model -> 앱 내애서 사용하는 데이터 (Struct)
     - View -> 화면에 보여지는 UI요소 (UIView, UIViewController)
-    - ViewModel -> Model의 내용을 View에서 사용할 수 있게 전환 (ViewModel Class)
+    - ViewModel -> Model의 내용을 View에서 사용할 수 있게 데이터 처리 (ViewModel Class)
+    - 특징 Command 패턴과 Data Binding을 사용하여 View와 ViewModel사이의 의존성을 제거함
+    - View를 통해 입력이 들어오면 커맨드 패턴을 통해서 ViewModel에 명령을 내리게 되고, 데이터 바인딩을 통해
+    viewModel의 값이 변화하면 View의 정보가 바뀌게 됨.
 
 
 - 상속과 POP의 차이점
