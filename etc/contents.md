@@ -98,6 +98,26 @@
 - 프롵토콜
     - 특정 기능을 실행하기 위해 필요한 요구사항을 정의한 것 
 
+- Hashable
+    - integer hash value를 생성하는 hasher로 hash될 수 있는 타입
+    - hashable 프로토콜을 상속 받은 hash 될 수 있는 타입
+    ```Swift
+    protocol Hashable: Equatable {
+        var hashValue: Int { get }
+        func hash(into hasher: inout Hasher)
+    }
+    ```
+    - hash 값을 찾을 수 있는 key 인 hashValue
+    ```Swift
+    protocol Equatable {
+        static func == (lhs: Self, rhs: Self) -> Bool
+    }
+    ```
+    - hashValue는 고유값이어야 하기 때문에 Equatable 프로토콜 상속 받음
+    - hashable 구현해주기 위해서는 
+        1. Equatable에 있는 == 함수 구현
+        2. HashValue를 만듦
+
 - 위임을 위한 프로토콜 (Delegation)
     - 클래스나 구조체가 자신의 책임이나 임무를 다른 타입의 인스턴스에게 위임하는 디자인 패턴
     - 책무를 위임하기 위해 정의한 프로토콜을 준수하는 타입은 자신에게 위임될 일정 책무를 할 수 있다는 것을 보장
