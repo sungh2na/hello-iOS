@@ -35,6 +35,8 @@
 
 - 두 개의 UILabel이 가로로 정렬돼있을 때 한개의 레이블의 컨텐츠를 무조건 표시해야하는 경우 어떻게 해야하는가 ?
     - Hugging priority, compression resistance priority 설정
+    - - 뷰가 커졌을 때 hugging priority가 더 높은 것은 설정한 크기를 유지하고 낮은 것의 크기를 늘려서 뷰를 채움
+    - 뷰가 작아졌을 때 compression priority 가 더 높은 것은 설정한 크기를 유지하고 낮은 것의 크기를 줄임
 
 - A와 B의 비율이 3:2로 표현해야할 경우 오토레이아웃을 어떻게 설정해야 하는가 ?
     - width의 비율이 3:2 라면 A와 B를 선택해서 Equal width 해주고 multipier 2/3로 설정
@@ -47,6 +49,13 @@
 - View 계층구조에서 같은 계층에 있는 뷰들끼리 앞 뒤 조절을 하기 위해서 어떻게 하겠는가 ?
     - View.layer.zindex 설정
 
++ NotificationCenter
+    - register된 observer들에게 정보를 broadcast 할 수 있게 해주는 dispatch mechanism이다.
+    - addObserver(_:selector:name:object:) 등 을 통해 Observer를 추가하고, 관찰을 시작한다.
+    - event가 발생하면 Object는 Notification center에게 notifiction을 post(송신) 한다.
+    - Notification center는 모든 registered Observer들에게 해당 내용을 Broadcast 한다.
+    - Observer들은 발생한 event에 대한 처리를 한다.
+
 ## 스위프트 관련 
 - 클래스와 스트럭트의 차이
     - 클래스는 reference타입 참조해서 할당
@@ -54,8 +63,13 @@
     - 클래스만 상속, 레퍼런스 카운팅, 디이니셜라이저, 타입캐스팅 가능
 
 - compactMap, map 차이
-    - map은 컨테이너의 요소에 매개변수로 받은 클로저 연산을 해서 다른 컨테이너로 반환, 데이터 타입 변환할 때 주로 쓰임
+    - map은 컨테이너 각 요소에 매개변수로 받은 클로져 연산을 적용한 후 다른 컨테이너로 반환해주는 함수,
+        다른 데이터 타입으로 변경할 때 주로 쓰임.
     - 옵셔널 컨테이너에서 map을 쓰면 옵셔널로 반환하고 compactMap 쓰면 옵셔널 내부의 값 추출하고 nil 없이 반환
+    
+    + flatmap은 중첩된 배열의 경우 단일 배열로 만들어줌.
+    + filter 컨테이너 내부의 값을 걸러서 추출하여 새로운 컨테이너에 반환
+    + reduce 컨테이너 내부의 콘텐츠를 하나로 합하는 기능을 가진 고차함수, 전달인자로 전달받은 클로저의 연산 결과로 합해줌.
 
 - Lazy Property
     - 호출될때 값을 할당함.
