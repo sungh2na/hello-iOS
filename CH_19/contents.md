@@ -47,6 +47,16 @@
 - 머신러닝 모델 만들기
 - Xcode - Open Developer tool - Create ML
 - newDocument - Choose a Template - Image Classifier
+- 어떤 모델을 만들고 싶은지
+    - Object Detector - 이미지 안에 물체 디텍터
+    - Sound Classifier
+    - Activity Classifier
+    - Text Classifier
+    - Word tagger
+    - Tabular Regressor
+    - Tabular Classifier
+    - Recommender
+- mlproj 파일 생성됨
 
 ## 머신러닝 모델 정확도
 - 어떻게하면 더 정확한 모델을 만들 수 있을까
