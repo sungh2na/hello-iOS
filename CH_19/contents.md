@@ -57,6 +57,14 @@
     - Tabular Classifier
     - Recommender
 - mlproj 파일 생성됨
+- 학습시키고자 하는 트레이닝 데이터, 검증할 테스트 데이터 필요
+- Training Data - select files
+    - Pets - 100 안에 Cat 폴더, Dog 폴더 (각각이 Class가 됨)
+- Testing Data - select files
+    - Pets - Testing
+- Validation Data - Auto 설정
+- Precision, Recall 둘다 높으면 좋음
+
 
 ## 머신러닝 모델 정확도
 - 어떻게하면 더 정확한 모델을 만들 수 있을까
