@@ -77,4 +77,10 @@
 - core ml wwdc 2019
 
 ## 앱에 내가 만든 모델 적용하기
-
+- Precision, Recall
+    - Precision -> 머신러닝 모델이 예상한것 것중에 실제 정답의 비율
+    - Recall -> 전체 정답 중에 맞힌 것이 몇개인지 비율,
+        - 머신러닝 모델이 전부 개라고 예측하면 Recall은 올라감, Precision은 떨어짐
+    - roc curve 그래프 안에 영역이 높으면 정확도가 높음
+- 적은 데이터로 높은 정확도가 나오는 모델을 선택 -> Training data 100, Testing data 200 선택 
+- output을 저장해서 앱에서 ml모델 바로 사용 가능
