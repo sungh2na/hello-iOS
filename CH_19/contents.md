@@ -92,3 +92,67 @@
     let model = try VNCoreMLModel(for: DogCatClassifier().model)
 ```
 - iOS Deployment Targer 12.0 이상으로 수정
+- 시뮬레이터 photos에 Pets-Practice 사진 드래그해서 넣기
+- 코드 보기
+    - 모델에 접근할 수 있는 객체로 만들어 줘야 함
+    - imageClassifier는 Vision의 도움을 받음
+    - VNCoreMLModel 비전코어엠엘모델로 바꿔줌
+
+    ```Swift
+    import Vision
+    let model = try VNCoreMLModel(for: DogCatClassifier().model)
+    ```
+
+    - 이 모델을 통해서 사진 찍은 것, 사진 불러온 것 등을 요청해야함 -> request를 만듦
+    - 이 객체를 이용해서 실제롬 머신러닝모델의 예측 결과를 받아올 수 있음
+    - request 보내지고나서 그 것의 핸들러 받아서 처리해줌 
+
+    ```Swift
+        let model = try VNCoreMLModel(for: DogCatClassifier().model)
+            
+        let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
+            self?.processClassifications(for: request, error: error)
+        })
+    ```
+
+    - 이미지 리퀘스트 보낼 때 돌아가거나 더 크거나 비율 다르면 안되니까 오리엔테이션을 잘 맞춰줘야함
+    - centerCrop, scaleFit, scaleFill 등
+    - centerCrop 많이 사용함
+    
+    ```Swift
+        request.imageCropAndScaleOption = .centerCrop
+    ```
+
+    - 결과물이 있는 부분
+    - 클래스 2개 (개, 고양이)만 뽑아와서 그거에 대한 결과물 가져와서 description
+        - classification.identifier 는 클래스의 이름 
+        - 그게 얼마나 확실한지 classification.confidence
+    - 그 description가지고 레이블 업데이트
+
+    ```Swift
+    func processClassifications(for request: VNRequest, error: Error?) {
+        DispatchQueue.main.async {
+            guard let results = request.results else {
+                self.classificationLabel.text = "Unable to classify image.\n\(error!.localizedDescription)"
+                return
+            }
+            // The `results` will always be `VNClassificationObservation`s, as specified by the Core ML model in this project.
+
+            let classifications = results as! [VNClassificationObservation]
+
+            if classifications.isEmpty {
+                self.classificationLabel.text = "Nothing recognized."
+            } else {
+                // Display top classifications ranked by confidence in the UI.
+
+                let topClassifications = classifications.prefix(2)
+                let descriptions = topClassifications.map { classification in
+                    // Formats the classification for display; e.g. "(0.37) cliff, drop, drop-off".
+
+                   return String(format: "  (%.2f) %@", classification.confidence, classification.identifier)
+                }
+                self.classificationLabel.text = "Classification:\n" + descriptions.joined(separator: "\n")
+            }
+        }
+    }
+```
