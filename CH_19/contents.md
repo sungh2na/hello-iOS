@@ -155,4 +155,34 @@
             }
         }
     }
-```
+
+    ```
+
+    - 모델에 요청하는 시점(사진을 누를 때) 불리는 함수
+    - 선택된 이미지를 가지고 리퀘스트를 하기 위해서는 그 리퀘스트를 실행하기 위해서는 ImageRequestHandler 이용해서 수행
+
+    ```Swift
+    /// - Tag: PerformRequests
+
+    func updateClassifications(for image: UIImage) {
+        classificationLabel.text = "Classifying..."
+        
+        let orientation = CGImagePropertyOrientation(image.imageOrientation)
+        guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            let handler = VNImageRequestHandler(ciImage: ciImage, orientation: orientation)
+            do {
+                try handler.perform([self.classificationRequest])
+            } catch {
+                /*
+                 This handler catches general image processing errors. The `classificationRequest`'s
+                 completion handler `processClassifications(_:error:)` catches errors specific
+                 to processing that request.
+                 */
+                print("Failed to perform classification.\n\(error.localizedDescription)")
+            }
+        }
+    }
+    ```
+    
