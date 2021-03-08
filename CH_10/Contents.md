@@ -21,7 +21,7 @@
 - MVVM 패턴이 나오기 전까지 MVC (Model- View - Controller) 패턴 오래 쓰임
 - **Model** -> 앱 내에서 사용하는 데이터 (Struct, Class)
 - **View** -> 화면에 보여지는 UI요소 (UIView)
-- **Controller** -> Model과 View 사이 중재자 역할
+- **Controller** -> Model과 View 사이 중개자 역할 (UIViewController)
 - Massive View Controller -> View Controller 가 하는 역할이 너무 많음, 기술부채 발생
 
 <br>
@@ -49,6 +49,8 @@
 - ViewController가 MVC패턴에서는 Controller 레이어에 있었는데 MVVM패턴에서는 View 레이어에 있음
 - MVVM 개선점 : View Controller의 역할을 축소함
 - 많은 일을 ViewModel로 위임했기 때문에 Class의 할일이 명확해짐
+
+-> ViewController가 View layer에 해당하고 View가 Model에 직접적으로 접근할 수 없으며 View Model을 통해서 접근하게 됨. 따라서 각자의 역할이 보다 명확하게 분리되고 유지/보수 측면에서 개선됨
 
 <br>
 <br>
