@@ -77,16 +77,42 @@
 
         <image src="뷰의 위치.png" >
 
-- 앱 동작 방식의 이해
-    - 앱은 여러개의 object로 이루어짐, UI버튼, UIlabel, 뷰컨트롤러
-    - iOS에서 제공해주는 것과 필요에따라 만들어 쓰는 것이 있음
-    - object들은 서로 메세지를 보내면서 커뮤니케이션
-    - 사용자가 버튼을 클릭했을 때 버튼은 뷰컨트롤러에게 클릭 되었음을 알림
-    뷰 컨트롤러는 Show alert 메서드 수행하고 UI alert controller 에게 메세지 보냄
-    - iOS 앱 자체는 이벤트 발생에 따라서 작동, 버튼 누르는 이벤트 등
-    - 앱은 이벤트를 계속 기다리고 있다는 뜻
-    - 요약
-        - 앱은 오브젝트로 구성
-        - 오브젝트 끼리 서로 메시지 보냄
-        - 앱은 이벤트에 의해 프로세스 동작함
-    
+## 앱 동작 방식의 이해
+- 앱은 여러개의 object로 이루어짐, UI버튼, UIlabel, 뷰컨트롤러
+- iOS에서 제공해주는 것과 필요에따라 만들어 쓰는 것이 있음
+- object들은 서로 메세지를 보내면서 커뮤니케이션
+- 사용자가 버튼을 클릭했을 때 버튼은 뷰컨트롤러에게 클릭 되었음을 알림
+뷰 컨트롤러는 Show alert 메서드 수행하고 UI alert controller 에게 메세지 보냄
+- iOS 앱 자체는 이벤트 발생에 따라서 작동, 버튼 누르는 이벤트 등
+- 앱은 이벤트를 계속 기다리고 있다는 뜻
+- 요약
+    - 앱은 오브젝트로 구성
+    - 오브젝트 끼리 서로 메시지 보냄
+    - 앱은 이벤트에 의해 프로세스 동작함
+
+## Swift
+- Object, Data, Method
+- String and Variable
+- Connecting Outlet
+- Writing Method
+- Local vs. Instance Variable
+- Closure
+
+1. Object, Data, Method
+    - App은 Object로 구성됨
+    - Object? 어떤 특정한 일을 하는 것
+    - UIAlertController의 직무 - 앱을 사용하는 중간에 특정 목적 메시지를 표시 하는 것
+    - View Controller는 화면을 구성하는 요소
+    - Object의 요소는 Method - Object에 속해서 기능을 수행하는 역할을 하는 것
+    - Data
+    - 쉽게 오브젝트 이해해보기 - 파티
+        - 파티 호스트(Object): 파티 준비(Method), 파티 초대 목록을 가지고 있음(Data)
+        - 파티 참석자(Object): 파티장 주소를 알 고 있음(Data), 주소지에 찾아 가는 것, 파티장에서 노는 것(Method)
+2. String and Variable
+    - String? 문자열의 나열
+    - String Interpolation -> 문자열에 변수를 포함시켜 출력이 가능하게 해주는 것을 말함
+    - "Hello \(변수)" -> "Hello 요미"
+    - Variable? 어떤 값을 저장할 수 있는 공간
+    - 컴퓨터 프로그래밍에서 변수 또는 스칼라는 아직 알려지지 않거나 어느정도까지만 알려져 있는 양이나 정보에 대한 상징적인 이름이다.
+    - 컴퓨터 소스 코드에서의 변수 이름은 일반적으로 데이터 저장 위치와 그 안의 내용물과 관련되어 있으며 이러한 것들을 프로그램 실행 도중에 변경될 수 있다.
+    - Object들은 여러 변수를 가지고 있음, 그리고 변수도 여러 타입을 가지고 있음 (정수형, 문자형 등)
