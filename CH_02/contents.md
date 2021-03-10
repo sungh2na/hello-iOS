@@ -111,7 +111,13 @@
 2. String and Variable
     - String? 문자열의 나열
     - String Interpolation -> 문자열에 변수를 포함시켜 출력이 가능하게 해주는 것을 말함
-    - "Hello \(변수)" -> "Hello 요미"
+    ```Swift
+    var currentValue = 0
+    let message = "가격은 \(currentValue)입니다."
+    ```
+        - currentValue는 Int형 변수이고, message는 String형 변수
+        - message내부에 currentValue라는 Int형 변수의 값을 문자열의 형태로 포함시키는 역할을 String interpolation이라고 함
+        
     - Variable? 어떤 값을 저장할 수 있는 공간
     - 컴퓨터 프로그래밍에서 변수 또는 스칼라는 아직 알려지지 않거나 어느정도까지만 알려져 있는 양이나 정보에 대한 상징적인 이름이다.
     - 컴퓨터 소스 코드에서의 변수 이름은 일반적으로 데이터 저장 위치와 그 안의 내용물과 관련되어 있으며 이러한 것들을 프로그램 실행 도중에 변경될 수 있다.
