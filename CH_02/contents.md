@@ -103,8 +103,10 @@
     - Object? 어떤 특정한 일을 하는 것
     - UIAlertController의 직무 - 앱을 사용하는 중간에 특정 목적 메시지를 표시 하는 것
     - View Controller는 화면을 구성하는 요소
-    - Object의 요소는 Method - Object에 속해서 기능을 수행하는 역할을 하는 것
-    - Data
+    - Object의 요소는 
+        - Method - Object에 속해서 기능을 수행하는 역할을 하는 것
+        - Data
+        - Object = Data + Method로 구성되고, Object가 의미있는 기능을 할 수 있게 데이터를 활용하는데 이 데이터를 보관하는 것이 변수
     - 쉽게 오브젝트 이해해보기 - 파티
         - 파티 호스트(Object): 파티 준비(Method), 파티 초대 목록을 가지고 있음(Data)
         - 파티 참석자(Object): 파티장 주소를 알 고 있음(Data), 주소지에 찾아 가는 것, 파티장에서 노는 것(Method)
@@ -117,8 +119,28 @@
     ```
         - currentValue는 Int형 변수이고, message는 String형 변수
         - message내부에 currentValue라는 Int형 변수의 값을 문자열의 형태로 포함시키는 역할을 String interpolation이라고 함
-        
+
     - Variable? 어떤 값을 저장할 수 있는 공간
     - 컴퓨터 프로그래밍에서 변수 또는 스칼라는 아직 알려지지 않거나 어느정도까지만 알려져 있는 양이나 정보에 대한 상징적인 이름이다.
     - 컴퓨터 소스 코드에서의 변수 이름은 일반적으로 데이터 저장 위치와 그 안의 내용물과 관련되어 있으며 이러한 것들을 프로그램 실행 도중에 변경될 수 있다.
     - Object들은 여러 변수를 가지고 있음, 그리고 변수도 여러 타입을 가지고 있음 (정수형, 문자형 등)
+
+3. 아웃렛 연결하기
+    - Outlet? Storyboard상의 Object에 대한 Reference
+    - 가격 label에 대한 Outlet을 연결하는 것을 통해 코드내부에 Storyboard상에 있는 Object(가격 레이블)의 값을 수정할 수 있음
+    - 어떤 특정 Object의 Outlet을 연결하는 것을 통해 Object의 내용을 바꾸거나 값을 수정하는 등 동적으로 여러가지 작업들을 처리할 수 있음
+
+    ```Swift
+    @IBAction func showAlert(_ sender: Any) { 
+        let message = "가격은 \(currentValue)입니다. " 
+        let alert = UIAlertController(title: "hello", message: message , preferredStyle: .alert ) 
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil) alert.addAction(action) 
+        let randomPrice = arc4random_uniform(10000) + 1 
+        currentValue = Int(randomPrice) 
+        alert.message = "￦\(currentValue)" 
+        
+        present(alert, animated: true, completion: nil ) 
+        valueOutlet.text = "￦\(currentValue)" 
+    }
+    ```
+    
