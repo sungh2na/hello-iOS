@@ -168,3 +168,11 @@
         var b = "This is String"
     ```
 
+7. 로컬변수 - 인스턴스 변수
+    - 변수들도 사용가능한 범위(scope)가 제 각기 다름
+    - Local Variable - 지역 변수
+        - 메소드 내부에서만 사용할 수 있는 변수
+    - Instance Variable - 인스턴스 변수
+        - 오브젝트 내부에서 사용할 수 있는 변수
+    
+    
