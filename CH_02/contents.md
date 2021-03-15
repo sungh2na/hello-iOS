@@ -175,4 +175,20 @@
     - Instance Variable - 인스턴스 변수
         - 오브젝트 내부에서 사용할 수 있는 변수
     
+8. 클로저 
+    - 실행가능한 코드 블럭
+    - 함수의 매개변수로 넘겨줄 수 있음
+    - 스위프트는 함수헝 프로그래밍 언어
+        - 함수도 객체로 보고 함수의 조합으로 프로그래밍하는 방식
+        - Closure 가 이것을 잘 보여줌
+    - alert가 호출되자마자 refresh 메소드가 수행되면서 가격 텍스트 변화
+    - refresh()메소드 대신 handler이용
+    ``` Swift
+        let action = UIAlertAction(title: "OK", style: .default, handler: {action in self.refresh()
+        })
+    ```
+        - handler라는 매개변수에 함수를 전달하여 action이 처리되고 나서 handler를 통해 어떤 행위를 하도록 함
+        - 함수형 프로그래밍에서 코드블럭으로 감싸진 메소드는 익명 객체로 처리되어 매개변수로 값을 넘겨줄 수 있음!!
+        - closure를 통해 메소드의 정으 없이 함수 형태로 만들 수 있음
+
     
