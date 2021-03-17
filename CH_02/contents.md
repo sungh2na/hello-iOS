@@ -198,3 +198,12 @@
     - 고해상의 이미지를 지원하는 디바이스 (2x -> Retina Display, 3x -> Retina HD Display) 에 알맞은 해상도의 이미지를 제공해야 함
     - Project Navigator - Assets 에 해당 Resource를 드래그해서 추가
     - @2x등 키워드 있으면 자동 삽입
+
+## 오토레이아웃
+    - Device의 해상도에 따라 깨질 수 도 있고 스크린 밖으로 튀어 나갈 수도 있음
+    - Frame Layout 구성 방식은 디자인의 일관성 유지가 힘듦
+    - Auto Layout 
+        - 각 컴포넌트의 상대적 위치와 Size정보를 줌으로서 일관적인 규칙을 정해줌
+        - 컴포넌트의 위치에 대한 constraints를 줌
+    - viewComponent들의 부모인 View와 상관 관계 설정을 통해 Screen상에 컴포넌트가 어디에 위치하는지 정해줄 수 있음
+    
