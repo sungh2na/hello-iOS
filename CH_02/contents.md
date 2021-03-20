@@ -206,4 +206,10 @@
         - 각 컴포넌트의 상대적 위치와 Size정보를 줌으로서 일관적인 규칙을 정해줌
         - 컴포넌트의 위치에 대한 constraints를 줌
     - viewComponent들의 부모인 View와 상관 관계 설정을 통해 Screen상에 컴포넌트가 어디에 위치하는지 정해줄 수 있음
+    - 앱 아이콘 바꾸기 
+        - Navigator Area - Assets.xcassets - AppIcon 설정
+        - 한 이미지를 여러가지 사이즈로 변환해줌
+            - https://appicon.co
+    - 기본적으로 설정되어 있는 앱의 이름, Display Name은 프로젝트 이름과 같음
+    - 프로젝트 클릭해서 설정 Display Name을 원하는 이름으로 바꿔줌
     
