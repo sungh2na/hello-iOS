@@ -172,3 +172,52 @@
 
     - 개발자는 애플로부터 iOS 기기에 앱을 설치할 수 있는 권한을 얻으려면 애플에서 인증을 받아야 하는데 애플은 인증서를 통해 개발자를 식별함
     - 프로비저닝 프로파일은 app id, certificate, device정보를 가지고 있어, ios기기 애플 인증서를 연결해주는 역할
+
+## UIView를 상속받아서 Button 만들기
+
+```Swift
+]import UIKit
+
+class ButtonView: UIView {
+    let buttonLabel = UILabel()
+    override func awakeFromNib() { // 스토리보드상에 클래스가 객체화될때
+        super.awakeFromNib()
+        buttonLabel.text = "hi"
+        // 코드 상에서 오토레이아웃 적용하기 전에서는 반드시 필요
+        buttonLabel.translatesAutoresizingMaskIntoConstraints = false // 1. 사이즈클래스 아니고 오토레이아웃을 사용하겠다
+        addSubview(buttonLabel) // 2.addSubview
+        // 3. Anchor 설정
+        buttonLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        buttonLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+    }
+    
+    override init(frame: CGRect) {  // 코드에서 init할경우 -> awakeFromNib
+        super.init(frame: frame)
+    }
+    
+    required init?(coder: NSCoder) {    // 스토리보드에서 init할 경우
+        super.init(coder: coder)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        print("touchesBegan")
+        backgroundColor = UIColor.black
+    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        print("touchesEnded")
+        backgroundColor = UIColor.systemPink
+    }
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesMoved(touches, with: event)
+        backgroundColor = UIColor.yellow
+    }
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        backgroundColor = UIColor.white
+    }
+    
+}
+
+```
