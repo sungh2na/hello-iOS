@@ -186,3 +186,7 @@
     }
     ```
     
+- https://apple.github.io/turicreate/docs/api/
+    - 애플에서 제공해주는 파이썬 기반의 머신러닝 프레임워크
+- https://www.tensorflow.org/swift/guide/overview
+- https://pytorch.org/mobile/ios/
