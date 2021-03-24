@@ -7,15 +7,17 @@
     - Suspended: 앱이 Background 상태에 있지만, 아무 코드도 실행하지 않는 상태, 시스템이 임의로 Background 상태의 앱을 Suspended 상태로 만듦
 
 - 뷰컨트롤러 생명주기
-    - init
-    - Loadview
-    - ViewDidLoad -> 뷰 컨트롤러가 메모리에 로드됐을 때 처음 한번만 실행, 초기화
-    - ViewWillAppear -> 뷰 컨트롤러가 화면에 나타나기 직전 항상 실행
-    - ViewDidAppear -> 뷰 컨트롤러가 화면에 나타난 직후 애니메이션 등
-    - ViewWillDisappear -> 뷰 컨트롤러가 화면에서 사라지기 직전 호출
-    - ViewDidDisappear -> 뷰 컨트롤러가 완전히 사라지고 나서 호출
-    - ViewDidUnload
+    - Loadview -> 화면에 띄어줄 뷰를 만드는 메서드로 뷰를 만들고 메모리에 올림, 직접 호출하면 안됨
+    - ViewDidLoad -> 뷰가 메모리에 로드됐을 때 처음 한번만 실행, 초기화 코드 작성
+    - ViewWillAppear -> 뷰가 화면에 나타나기 직전 항상 호출, 다른 뷰에 갔다가 다시 돌아오는 상황에 해주고 싶은 처리 작성
+    - ViewDidAppear -> 뷰가 화면에 나타난 직후 호출, 화면에 적용될 애니메이션을 그려줌
+    - ViewWillDisappear -> 뷰가 화면에서 사라지기 직전 호출
+    - ViewDidDisappear -> 뷰가 완전히 사라진 직후 호출
+
     -> 앱 실행중에는 ViewWillAppear 부터 ViewDidDisappear까지 순환
+    -> viewWillAppear와 viewDidAppear 사이에 constraint와 layout이 적용된다
+
+<image src="Resource/뷰컨트롤러생명주기.png" >
 
 - 오토레이아웃이 적용되는시점
     - ViewWillAppear와 ViewDidAppear 사이에 viewWillLaydoutSubview() 메서드를 호출한다.
