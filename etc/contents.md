@@ -36,8 +36,8 @@
 
 
 - 두 개의 UILabel이 가로로 정렬돼있을 때 한개의 레이블의 컨텐츠를 무조건 표시해야하는 경우 어떻게 해야하는가 ?
-    - Hugging priority, compression resistance priority 설정
-    - - 뷰가 커졌을 때 hugging priority가 더 높은 것은 설정한 크기를 유지하고 낮은 것의 크기를 늘려서 뷰를 채움
+    - 무조건 표시해야하는 레이블의 Hugging priority, compression resistance priority를 더 높게 설정해 줌
+    - 뷰가 커졌을 때 hugging priority가 더 높은 것은 설정한 크기를 유지하고 낮은 것의 크기를 늘려서 뷰를 채움
     - 뷰가 작아졌을 때 compression priority 가 더 높은 것은 설정한 크기를 유지하고 낮은 것의 크기를 줄임
 
 - A와 B의 비율이 3:2로 표현해야할 경우 오토레이아웃을 어떻게 설정해야 하는가 ?
