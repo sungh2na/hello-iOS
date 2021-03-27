@@ -26,6 +26,10 @@
         return cell
     }
  ```
+    - dequeueReusableCell을 써서 기존 cell을 재사용해서 계속 뿌려줄 것임을 나타내 줌
+    - cell을 불러와야되므로 스토리보드에서 테이블뷰 셀에 Identifier을 "cell"로 작성하고 dequeueReusableCell의 withIdentifier에 똑같이 "cell"을 써줌
+    - 스토리 보드에서 tableView 와 뷰컨트롤러 control + 드래그로 dataSource와 delegate 연결해주기
+
 - **UITableViewDelegate** -> 테이블 뷰 클릭하면 어떻게 할지
 - protocol: 테이블뷰 서비스를 쓰기 위해 해야 할 일
 
