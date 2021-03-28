@@ -76,5 +76,10 @@
 
 ``` 
 - sender 파라미터에 정보를 넣어서 보냄
+    - 스토리보드에서 segue의 이름을 설정하고 설정한 이름으로 특정 segue에만 접근하게 할 수 있음
+    segue가 여러개가 될 경우 이름이 있어야 함
+    - showDetail이라고 이름을 추가해준다 
 - segue 수행하기 직전에 준비하는 함수 **prepare** 작성 (sender 정보 이용)
+    - performsegue가 실행되기 전에 segue가 실행되는 걸 준비하는 함수
+    - prepare함수는 기존에 있는 걸 가져다 쓰므로 override를 붙여서 써줌
 - **updateUI()** -> segue 수행한 후에 넘어온 정보를 업데이트 시킴
