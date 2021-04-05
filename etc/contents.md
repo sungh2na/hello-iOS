@@ -146,6 +146,16 @@
 - delegate 패턴
     - 델리게이트는 어떤 객체가 해야 하는 일을 부분적으로 확장해서 대신 처리
     - 대신 처리해줄 객체와 대친 처리하라고 시키는 객체
+    
+- 컨텍스트, 컨테이너 
+    - 컨텍스트는 무언가를 담고있는 것을 의미
+    - 이렇게 무엇을 담고있다는 의미에서 컨테이너(Container) 역시 컨텍스트의 일종으로 볼 수 있음
+    - array, set, dictionary, optional 등
+
+- functor, monad
+    - map을 지원하면 functor
+    - flatmap을 지원하면 monad
+    - https://baked-corn.tistory.com/131
 
 ## 아키텍쳐
 - MVC
