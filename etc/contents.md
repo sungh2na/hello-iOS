@@ -157,6 +157,29 @@
     - flatmap을 지원하면 monad
     - https://baked-corn.tistory.com/131
 
++ Modal
+    - 사용자가 보고있던 화면 위에 다른 화면을 띄워서 시선을 끌게 만드는 방식
+    - 흐름이 끊어져서 딱 눈에 들어와야 하는 컨텐츠를 담는데 사용
+    - 짧게 처리할 수 있는 컨텐츠
+    - Presentation Style
+        - modalPressentationStyle 프로퍼티에 상수값 넣어주기
+        - UIModalPresentationFullScreen - 전체 화면을 완전히 덮어 화면 전체에 새로운 뷰를 보여주는 방식. 제일 기본
+        - UIModalPresentationCurrentContext 
+            - 현재 뷰에 대응해 새로운 뷰를 보여주는 방식
+            - 아래에 깔리는 뷰를 context에서 삭제하고 위에 새로운 뷰로 덮는 방식
+        - UIModalPresentationOverFullScreen / Over CurrentContext
+            - 새로 생성하는 뷰의 투명도(알파값)를 정해 기존의 뷰를 볼 수 있는 스타일
+            - 기존 뷰를 그대로 남겨두고 위에 뷰를 덮기 때문에 투명도를 조절해 반투명 상태로 만들어주면 새로운 뷰 아래에 기존 뷰를 볼 수 있음
+        - UIModalPresentationPageSheet
+            - 뷰의 가로를 늘이지 않고 그대로 보여주는 스타일
+        - UIModalPresentationFormSheet
+            - 화면 가장자리에서 상하좌우 모두 여백을 가지고 섬처럼 떠있는 방식의 프레젠테이션 스타일
+        - UIModalPresentationPopover
+            - 팝오버뷰로 새로운 뷰 나타냄
+            - 추가 정보, 선택한 것에 대한 추가 옵션 등을 나타내는데 주로 사용
+            - iPad 에서만 지원
+        - Creating Custom Presentation
+
 ## 아키텍쳐
 - MVC
     - Model -> 앱 내애서 사용하는 데이터와 데이터 처리부 (Struct, class)
